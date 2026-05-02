@@ -29,7 +29,8 @@ import Antigravity from '@/src/components/ui/Antigravity';
 interface ContactFormData {
   fullName: string;
   email: string;
-  businessType: string;
+  budget: string;
+  services: string;
   websiteUrl: string;
   phoneNumber: string;
   companyName: string;
@@ -42,16 +43,17 @@ export default function Contact() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6M9tmlSyatzILGBEdtrYFy1_Mp0ETUyYKnu5i9xwZGn2h2RXqA2cFDS_od0m0EOtM/exec";
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxMdcxVdmmHPMFMTxKYxK2T9kTKir31_emDqrU9soqKR4R5jJnUGphJzklbDeV9uP8P/exec";
       
       const payload = {
         form_type: "Contact Page Form",
-        name: data.fullName,
+        full_name: data.fullName,
         email: data.email,
         phone: data.phoneNumber || 'N/A',
         company: data.companyName || 'N/A',
-        business_type: data.businessType || 'N/A',
         website: data.websiteUrl || 'N/A',
+        budget: data.budget || 'N/A',
+        service: data.services || 'N/A',
         message: data.message,
         page_url: window.location.href
       };
@@ -213,7 +215,7 @@ export default function Contact() {
                           <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Phone Number</Label>
                           <Input
                             id="phone"
-                            {...register('phoneNumber')}
+                            {...register('phoneNumber', { required: 'Phone is required' })}
                             type="tel"
                             placeholder="+1 234 567 890"
                             className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
@@ -229,24 +231,46 @@ export default function Contact() {
                           />
                         </div>
                       </div>
+                      <div className="space-y-2">
+                        <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Website URL (Optional)</Label>
+                        <Input
+                          id="website"
+                          {...register('websiteUrl')}
+                          placeholder="https://..."
+                          className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                        />
+                      </div>
                       <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Business Type</Label>
-                          <Input
-                            id="business_type"
-                            {...register('businessType', { required: 'Business type is required' })}
-                            placeholder="e.g. SaaS"
-                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
-                          />
+                          <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Budget</Label>
+                          <select
+                            id="budget"
+                            {...register('budget', { required: 'Budget is required' })}
+                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
+                          >
+                            <option value="">Select Budget</option>
+                            <option value="<50k">&lt; Rs 50,000</option>
+                            <option value="50k-100k">Rs 50,000 - Rs 100,000</option>
+                            <option value="100k-200k">Rs 100,000 - Rs 200,000</option>
+                            <option value="200k+">Rs 200,000+</option>
+                          </select>
                         </div>
                         <div className="space-y-2">
-                          <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Website URL (Optional)</Label>
-                          <Input
-                            id="website"
-                            {...register('websiteUrl')}
-                            placeholder="https://..."
-                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
-                          />
+                          <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Services</Label>
+                          <select
+                            id="services"
+                            {...register('services', { required: 'Service is required' })}
+                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
+                          >
+                            <option value="">Select Service</option>
+                            <option value="wordpress">Wordpress Web Development</option>
+                            <option value="shopify">Shopify Store Designing</option>
+                            <option value="custom_web">Custom Web Development</option>
+                            <option value="seo">Search Engine Optimization(SEO)</option>
+                            <option value="marketing">Performance Marketing(Meta & Google)</option>
+                            <option value="audit">Free Audit / Consultation</option>
+                            <option value="other">Other</option>
+                          </select>
                         </div>
                       </div>
                       <div className="space-y-2">
@@ -254,9 +278,9 @@ export default function Contact() {
                         <textarea
                           id="message"
                           {...register('message', { required: 'Message is required' })}
-                          placeholder="Tell us about your current challenges, goals, or the services you're interested in (web development, SEO, performance marketing, or n8n automation)..."
-                          className="w-full h-40 bg-surface/50 border border-white/10 rounded-[5px] p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none"
-                        />
+                          placeholder="Tell us about your project..."
+                          className="w-full h-32 bg-surface/50 border border-white/10 rounded-[5px] p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none"
+                        ></textarea>
                       </div>
                       <Button type="submit" size="lg" className="w-full h-18 text-xl font-black shadow-glow group">
                         SEND STRATEGY REQUEST <Send size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />

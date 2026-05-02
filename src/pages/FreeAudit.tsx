@@ -28,11 +28,11 @@ interface AuditFormData {
   fullName: string;
   email: string;
   websiteUrl: string;
-  businessType: string;
-  monthlyAdBudget: string;
+  budget: string;
+  services: string;
   phoneNumber: string;
   companyName: string;
-  goals: string;
+  message: string;
 }
 
 export default function FreeAudit() {
@@ -41,17 +41,18 @@ export default function FreeAudit() {
 
   const onSubmit = async (data: AuditFormData) => {
     try {
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6M9tmlSyatzILGBEdtrYFy1_Mp0ETUyYKnu5i9xwZGn2h2RXqA2cFDS_od0m0EOtM/exec";
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxMdcxVdmmHPMFMTxKYxK2T9kTKir31_emDqrU9soqKR4R5jJnUGphJzklbDeV9uP8P/exec";
       
       const payload = {
         form_type: "Free Audit Page Form",
-        name: data.fullName,
+        full_name: data.fullName,
         email: data.email,
         phone: data.phoneNumber || 'N/A',
         company: data.companyName || 'N/A',
-        business_type: data.businessType || 'N/A',
         website: data.websiteUrl || 'N/A',
-        message: data.goals || 'N/A',
+        budget: data.budget || 'N/A',
+        service: data.services || 'N/A',
+        message: data.message || 'N/A',
         page_url: window.location.href
       };
 
@@ -243,21 +244,12 @@ export default function FreeAudit() {
                             className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
                           />
                         </div>
-                        <div className="space-y-2">
-                          <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Website URL</Label>
-                          <Input
-                            id="website"
-                            {...register('websiteUrl', { required: 'URL is required' })}
-                            placeholder="https://example.com"
-                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
-                          />
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid md:grid-cols-2 gap-6">
                           <div className="space-y-2">
                             <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Phone Number</Label>
                             <Input
                               id="phone"
-                              {...register('phoneNumber')}
+                              {...register('phoneNumber', { required: 'Phone is required' })}
                               type="tel"
                               placeholder="+1 234 567 890"
                               className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
@@ -273,37 +265,56 @@ export default function FreeAudit() {
                             />
                           </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Website URL (Optional)</Label>
+                          <Input
+                            id="website"
+                            {...register('websiteUrl')}
+                            placeholder="https://..."
+                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                          />
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-6">
                           <div className="space-y-2">
-                            <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Business Type</Label>
-                            <Input
-                              id="business_type"
-                              {...register('businessType')}
-                              placeholder="e.g. SaaS"
-                              className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Monthly Marketing Budget</Label>
+                            <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Budget</Label>
                             <select
-                              {...register('monthlyAdBudget')}
+                              id="budget"
+                              {...register('budget', { required: 'Budget is required' })}
                               className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
                             >
-                              <option value="&lt;$1k">&lt;$1,000</option>
-                              <option value="$1k-$5k">$1,000 - $5,000</option>
-                              <option value="$5k-$10k">$5,000 - $10,000</option>
-                              <option value="$10k+">$10,000+</option>
+                              <option value="">Select Budget</option>
+                              <option value="<50k">&lt; Rs 50,000</option>
+                              <option value="50k-100k">Rs 50,000 - Rs 100,000</option>
+                              <option value="100k-200k">Rs 100,000 - Rs 200,000</option>
+                              <option value="200k+">Rs 200,000+</option>
+                            </select>
+                          </div>
+                          <div className="space-y-2">
+                            <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Services</Label>
+                            <select
+                              id="services"
+                              {...register('services', { required: 'Service is required' })}
+                              className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
+                            >
+                              <option value="">Select Service</option>
+                              <option value="wordpress">Wordpress Web Development</option>
+                              <option value="shopify">Shopify Store Designing</option>
+                              <option value="custom_web">Custom Web Development</option>
+                              <option value="seo">Search Engine Optimization(SEO)</option>
+                              <option value="marketing">Performance Marketing(Meta & Google)</option>
+                              <option value="audit">Free Audit / Consultation</option>
+                              <option value="other">Other</option>
                             </select>
                           </div>
                         </div>
                         <div className="space-y-2">
-                          <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Your Goals (Short Description)</Label>
+                          <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Message</Label>
                           <textarea
                             id="message"
-                            {...register('goals')}
-                            placeholder="We want to double our conversions by end of Q3..."
+                            {...register('message', { required: 'Message is required' })}
+                            placeholder="Tell us about your project..."
                             className="w-full h-32 bg-surface/50 border border-white/10 rounded-[5px] p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none"
-                          />
+                          ></textarea>
                         </div>
                         <Button type="submit" size="lg" className="w-full h-18 text-xl font-black shadow-glow group">
                           CLAIM MY FREE AUDIT <ArrowRight size={24} className="ml-2 group-hover:translate-x-2 transition-transform" />

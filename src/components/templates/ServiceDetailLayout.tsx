@@ -3,16 +3,50 @@ import { motion } from 'motion/react';
 import { Navbar } from '../layout/Navbar';
 import { Footer } from '../layout/Footer';
 import { SEO } from '../ui/SEO';
-import { ChevronRight, HelpCircle, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
+import { ChevronRight, HelpCircle, CheckCircle2, AlertCircle, ArrowRight, Plus, Minus } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Link } from 'react-router-dom';
 import { PricingSection } from '../ui/PricingSection';
 import Antigravity from '../ui/Antigravity';
+import { AnimatePresence } from 'motion/react';
 
 interface FAQItem {
   question: string;
   answer: string;
 }
+
+const FAQItemComponent = ({ question, answer, isOpen, onToggle }: { question: string, answer: string, isOpen: boolean, onToggle: () => void }) => {
+  return (
+    <div className="glass rounded-[5px] border-white/10 overflow-hidden transition-all duration-300">
+      <button 
+        onClick={onToggle}
+        className={`w-full p-8 text-left flex items-start justify-between transition-colors ${isOpen ? 'bg-white/[0.04]' : 'hover:bg-white/[0.02]'}`}
+      >
+        <h3 className="text-xl font-black flex gap-3 items-start">
+          <HelpCircle className={`mt-1 flex-shrink-0 transition-colors ${isOpen ? 'text-primary' : 'text-text-muted'}`} size={20} />
+          {question}
+        </h3>
+        <div className={`mt-1 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+          {isOpen ? <Minus size={20} className="text-primary" /> : <Plus size={20} className="text-text-muted" />}
+        </div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            <div className="px-8 pb-8 pl-16 text-text-secondary font-sans leading-relaxed">
+              {answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 interface ServiceDetailLayoutProps {
   seoTitle: string;
@@ -90,6 +124,8 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
   faqs,
   pricingCategoryId
 }) => {
+  const [openFaqIndex, setOpenFaqIndex] = React.useState<number | null>(null);
+
   return (
     <div className="min-h-screen bg-background">
       <SEO title={seoTitle} description={seoDescription} />
@@ -315,15 +351,12 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
             <h2 className="text-4xl font-black mb-16 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
-                <div key={i} className="glass p-8 rounded-[5px] border-white/10">
-                  <h3 className="text-xl font-black mb-4 flex gap-3 items-start">
-                    <HelpCircle className="text-primary mt-1 flex-shrink-0" size={20} />
-                    {faq.question}
-                  </h3>
-                  <p className="text-text-secondary font-sans leading-relaxed pl-8">
-                    {faq.answer}
-                  </p>
-                </div>
+                <FAQItemComponent 
+                  key={i} 
+                  {...faq} 
+                  isOpen={openFaqIndex === i}
+                  onToggle={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
+                />
               ))}
             </div>
           </div>

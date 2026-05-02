@@ -51,23 +51,24 @@ export default function Home() {
     const form = e.currentTarget;
     
     try {
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6M9tmlSyatzILGBEdtrYFy1_Mp0ETUyYKnu5i9xwZGn2h2RXqA2cFDS_od0m0EOtM/exec";
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxMdcxVdmmHPMFMTxKYxK2T9kTKir31_emDqrU9soqKR4R5jJnUGphJzklbDeV9uP8P/exec";
       
       const payload = {
         form_type: "Home Page Footer Form",
-        name: (form.querySelector('#name') as HTMLInputElement).value,
+        full_name: (form.querySelector('#name') as HTMLInputElement).value,
         email: (form.querySelector('#email') as HTMLInputElement).value,
         phone: (form.querySelector('#phone') as HTMLInputElement).value,
         company: (form.querySelector('#company') as HTMLInputElement).value,
-        business_type: (form.querySelector('#business_type') as HTMLSelectElement).value,
         website: (form.querySelector('#website') as HTMLInputElement).value,
+        budget: (form.querySelector('#budget') as HTMLSelectElement).value,
+        service: (form.querySelector('#services') as HTMLSelectElement).value,
         message: (form.querySelector('#message') as HTMLTextAreaElement).value,
         page_url: window.location.href
       };
 
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors", // Added to avoid CORS issues with Google Scripts
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json"
         },
@@ -537,26 +538,38 @@ export default function Home() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2 text-text-primary">
                         <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Phone Number</Label>
-                        <Input id="phone" type="tel" name="phoneNumber" placeholder="+1 234 567 890" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" />
+                        <Input id="phone" type="tel" name="phoneNumber" placeholder="+1 234 567 890" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
                       </div>
                       <div className="space-y-2 text-text-primary">
                         <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Company Name</Label>
                         <Input id="company" type="text" name="companyName" placeholder="Acme Corp" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" />
                       </div>
                     </div>
+                    <div className="space-y-2 text-text-primary">
+                      <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Website URL (Optional)</Label>
+                      <Input id="website" type="url" name="website" placeholder="https://..." className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" />
+                    </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2 text-text-primary">
-                        <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Business Type</Label>
-                        <select id="business_type" name="businessType" className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer">
-                          <option>SaaS / Tech</option>
-                          <option>E-commerce</option>
-                          <option>Service</option>
-                          <option>Other</option>
+                        <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Budget</Label>
+                        <select id="budget" name="budget" className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer" required>
+                          <option value="<50k">&lt; Rs 50,000</option>
+                          <option value="50k-100k">Rs 50,000 - Rs 100,000</option>
+                          <option value="100k-200k">Rs 100,000 - Rs 200,000</option>
+                          <option value="200k+">Rs 200,000+</option>
                         </select>
                       </div>
                       <div className="space-y-2 text-text-primary">
-                        <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Website (Opt)</Label>
-                        <Input id="website" type="url" name="website" placeholder="https://..." className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" />
+                        <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Services</Label>
+                        <select id="services" name="services" className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer" required>
+                          <option value="wordpress">Wordpress Web Development</option>
+                          <option value="shopify">Shopify Store Designing</option>
+                          <option value="custom_web">Custom Web Development</option>
+                          <option value="seo">Search Engine Optimization(SEO)</option>
+                          <option value="marketing">Performance Marketing(Meta & Google)</option>
+                          <option value="audit">Free Audit / Consultation</option>
+                          <option value="other">Other</option>
+                        </select>
                       </div>
                     </div>
                     <div className="space-y-2 text-text-primary">
