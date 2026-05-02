@@ -1,13 +1,13 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Sparkles, 
-  Cpu, 
-  Target, 
-  Zap, 
-  ArrowRight, 
-  CheckCircle2, 
+import {
+  Sparkles,
+  Cpu,
+  Target,
+  Zap,
+  ArrowRight,
+  CheckCircle2,
   Star,
   Users,
   BarChart3,
@@ -45,14 +45,14 @@ const Section = ({ children, className = "" }: { children: React.ReactNode, clas
 
 export default function Home() {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  
+
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    
+
     try {
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxMdcxVdmmHPMFMTxKYxK2T9kTKir31_emDqrU9soqKR4R5jJnUGphJzklbDeV9uP8P/exec";
-      
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyK50yHJ_WpBIRI-QmJxHSGecqrIfbQR4MGi3gVo3Nyp0l0WGjthRYIq8p8ZjtRzpZ0/exec";
+
       const payload = {
         form_type: "Home Page Footer Form",
         full_name: (form.querySelector('#name') as HTMLInputElement).value,
@@ -127,12 +127,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-text-primary">
-      <SEO 
-        title="AI Web Development, SEO & Automation Agency | Codecubes" 
+      <SEO
+        title="AI Web Development, SEO & Automation Agency | Codecubes"
         description="Codecubes builds high-converting websites, performance marketing campaigns, and AI-powered automation systems to help businesses grow faster."
       />
       <Navbar />
-      
+
       <main className="flex-grow pt-20">
         {/* HERO SECTION */}
         <Section className="relative pt-32 md:pt-48 lg:pt-40 overflow-hidden text-center min-h-[80vh] flex items-center">
@@ -169,7 +169,7 @@ export default function Home() {
           />
           <div className="max-w-4xl mx-auto relative z-10">
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.5 }}
@@ -178,8 +178,8 @@ export default function Home() {
               <Sparkles size={16} className="text-primary animate-pulse" />
               <span className="text-sm font-bold tracking-[0.3em] uppercase text-primary">SCALABLE DIGITAL SYSTEMS</span>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
@@ -187,8 +187,8 @@ export default function Home() {
             >
               AI-Powered Web Development, SEO & <span className="text-gradient">Performance Marketing</span> That Drives Real Growth
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7 }}
@@ -196,7 +196,7 @@ export default function Home() {
             >
               We build high-performing digital systems that combine modern web development, data-driven marketing, and <span className="text-text-primary font-bold">advanced n8n automation workflows</span> to help businesses scale efficiently.
             </motion.p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <Link to="/free-audit">
                 <Button size="lg" className="h-16 px-10 text-lg font-black shadow-strong-glow hover:scale-105 active:scale-95 transition-all">
@@ -214,7 +214,7 @@ export default function Home() {
               Share your business goals and current challenges. Our team will review your setup and provide practical, data-backed recommendations tailored to your growth.
             </p>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
@@ -250,8 +250,8 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, i) => (
-              <BorderGlow 
-                key={i} 
+              <BorderGlow
+                key={i}
                 borderRadius={5}
                 backgroundColor="var(--surface)"
                 glowColor="22 100% 50%"
@@ -280,7 +280,7 @@ export default function Home() {
             <div>
               <h2 className="text-4xl md:text-6xl font-black mb-8">Challenges <span className="text-gradient">We Solve</span></h2>
               <p className="text-xl text-text-secondary font-sans mb-12">Why Businesses Struggle to Scale Online</p>
-              
+
               <div className="space-y-6">
                 {[
                   "Websites that fail to convert visitors into customers",
@@ -305,9 +305,9 @@ export default function Home() {
             </div>
             <motion.div style={{ y: yParallax }} className="relative">
               <div className="absolute inset-0 bg-primary/20 blur-[150px] -z-10 rounded-[5px]" />
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800&h=1200" 
-                alt="Development Team" 
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800&h=1200"
+                alt="Development Team"
                 className="rounded-[5px] shadow-2xl border border-white/10"
               />
             </motion.div>
@@ -324,14 +324,14 @@ export default function Home() {
           <div className="max-w-6xl mx-auto relative px-4 py-20">
             {/* Desktop Progress Line */}
             <div className="absolute top-[88px] left-[15%] right-[15%] h-1 bg-primary/10 hidden md:block overflow-hidden">
-               <motion.div 
-                 initial={{ width: 0 }}
-                 whileInView={{ width: "100%" }}
-                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                 className="h-full bg-primary"
-               />
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="h-full bg-primary"
+              />
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-20 relative z-10">
               {[
                 { step: "01", title: "Audit", desc: "Evaluating your website, marketing, and workflows.", icon: <Search /> },
@@ -340,7 +340,7 @@ export default function Home() {
               ].map((p, i) => (
                 <div key={i} className="flex flex-col items-center text-center group">
                   <div className="relative mb-10">
-                    <motion.div 
+                    <motion.div
                       initial={{ scale: 0.8, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
                       transition={{ delay: i * 0.2 }}
@@ -365,9 +365,9 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div style={{ y: yParallax }} className="order-2 lg:order-1 relative">
               <div className="absolute inset-0 bg-primary/20 blur-[150px] -z-10 rounded-[5px]" />
-              <img 
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200" 
-                alt="n8n Automation" 
+              <img
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200"
+                alt="n8n Automation"
                 className="rounded-[5px] shadow-2xl border border-white/10"
               />
               <GlassCard className="absolute -bottom-10 -right-10 p-8 hidden md:block max-w-[300px]">
@@ -498,98 +498,98 @@ export default function Home() {
         {/* FINAL CONTACT SECTION */}
         <Section className="bg-background relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center bg-surface/50 rounded-[5px] p-8 md:p-16 border border-white/5 relative overflow-hidden">
-             <div className="absolute inset-0 bg-primary/5 -z-10" />
-             <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/20 blur-[150px] rounded-[5px] -z-10" />
-             
-             <div>
-               <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Start Building a <span className="text-gradient">Smarter Growth System</span></h2>
-               <p className="text-xl text-text-secondary leading-relaxed font-sans mb-12">
-                 Tell us about your business and goals. We’ll help you identify the right strategy to improve performance and scale efficiently.
-               </p>
-               <div className="flex flex-col gap-6">
-                 <div className="flex items-center gap-4 text-text-primary">
-                   <div className="w-12 h-12 glass rounded-[5px] flex items-center justify-center text-primary"><Zap size={24} /></div>
-                   <div>
-                     <div className="font-black">Expert Guidance</div>
-                     <div className="text-sm text-text-muted font-sans">Tailored strategy for your business.</div>
-                   </div>
-                 </div>
-                 <div className="flex items-center gap-4 text-text-primary">
-                   <div className="w-12 h-12 glass rounded-[5px] flex items-center justify-center text-primary"><Database size={24} /></div>
-                   <div>
-                     <div className="font-black">Clear Roadmap</div>
-                     <div className="text-sm text-text-muted font-sans">Identifying gaps in current systems.</div>
-                   </div>
-                 </div>
-               </div>
-             </div>
+            <div className="absolute inset-0 bg-primary/5 -z-10" />
+            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/20 blur-[150px] rounded-[5px] -z-10" />
 
-             <GlassCard className="p-8 md:p-10 border-primary/20 bg-background/50 backdrop-blur-3xl shadow-strong-glow">
-                {!formSubmitted ? (
-                  <form className="space-y-6" onSubmit={handleFormSubmit}>
-                    <div className="space-y-2 text-text-primary">
-                      <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Full Name</Label>
-                      <Input id="name" type="text" name="fullName" placeholder="John Doe" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
-                    </div>
-                    <div className="space-y-2 text-text-primary">
-                      <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Email Address</Label>
-                      <Input id="email" type="email" name="email" placeholder="john@company.com" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2 text-text-primary">
-                        <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Phone Number</Label>
-                        <Input id="phone" type="tel" name="phoneNumber" placeholder="+1 234 567 890" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
-                      </div>
-                      <div className="space-y-2 text-text-primary">
-                        <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Company Name</Label>
-                        <Input id="company" type="text" name="companyName" placeholder="Acme Corp" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" />
-                      </div>
-                    </div>
-                    <div className="space-y-2 text-text-primary">
-                      <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Website URL (Optional)</Label>
-                      <Input id="website" type="url" name="website" placeholder="https://..." className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2 text-text-primary">
-                        <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Budget</Label>
-                        <select id="budget" name="budget" className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer" required>
-                          <option value="<50k">&lt; Rs 50,000</option>
-                          <option value="50k-100k">Rs 50,000 - Rs 100,000</option>
-                          <option value="100k-200k">Rs 100,000 - Rs 200,000</option>
-                          <option value="200k+">Rs 200,000+</option>
-                        </select>
-                      </div>
-                      <div className="space-y-2 text-text-primary">
-                        <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Services</Label>
-                        <select id="services" name="services" className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer" required>
-                          <option value="wordpress">Wordpress Web Development</option>
-                          <option value="shopify">Shopify Store Designing</option>
-                          <option value="custom_web">Custom Web Development</option>
-                          <option value="seo">Search Engine Optimization(SEO)</option>
-                          <option value="marketing">Performance Marketing(Meta & Google)</option>
-                          <option value="audit">Free Audit / Consultation</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="space-y-2 text-text-primary">
-                      <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Message</Label>
-                      <textarea id="message" name="message" placeholder="Tell us about your challenges..." className="w-full h-32 bg-surface/50 border border-white/10 rounded-[5px] p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none" required></textarea>
-                    </div>
-                    <Button type="submit" size="lg" className="w-full h-16 text-lg font-black shadow-glow group">
-                      CLAIM MY GROWTH STRATEGY <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
-                    </Button>
-                  </form>
-                ) : (
-                  <div className="text-center py-20">
-                    <div className="w-24 h-24 bg-primary/10 rounded-[5px] flex items-center justify-center mx-auto mb-8">
-                      <CheckCircle2 size={48} className="text-primary" />
-                    </div>
-                    <h3 className="text-3xl font-black mb-4">Request Sent</h3>
-                    <p className="text-text-secondary font-sans text-lg">Our scale specialists will review your submission and respond within 24 hours.</p>
+            <div>
+              <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Start Building a <span className="text-gradient">Smarter Growth System</span></h2>
+              <p className="text-xl text-text-secondary leading-relaxed font-sans mb-12">
+                Tell us about your business and goals. We’ll help you identify the right strategy to improve performance and scale efficiently.
+              </p>
+              <div className="flex flex-col gap-6">
+                <div className="flex items-center gap-4 text-text-primary">
+                  <div className="w-12 h-12 glass rounded-[5px] flex items-center justify-center text-primary"><Zap size={24} /></div>
+                  <div>
+                    <div className="font-black">Expert Guidance</div>
+                    <div className="text-sm text-text-muted font-sans">Tailored strategy for your business.</div>
                   </div>
-                )}
-             </GlassCard>
+                </div>
+                <div className="flex items-center gap-4 text-text-primary">
+                  <div className="w-12 h-12 glass rounded-[5px] flex items-center justify-center text-primary"><Database size={24} /></div>
+                  <div>
+                    <div className="font-black">Clear Roadmap</div>
+                    <div className="text-sm text-text-muted font-sans">Identifying gaps in current systems.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <GlassCard className="p-8 md:p-10 border-primary/20 bg-background/50 backdrop-blur-3xl shadow-strong-glow">
+              {!formSubmitted ? (
+                <form className="space-y-6" onSubmit={handleFormSubmit}>
+                  <div className="space-y-2 text-text-primary">
+                    <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Full Name</Label>
+                    <Input id="name" type="text" name="fullName" placeholder="John Doe" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
+                  </div>
+                  <div className="space-y-2 text-text-primary">
+                    <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Email Address</Label>
+                    <Input id="email" type="email" name="email" placeholder="john@company.com" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2 text-text-primary">
+                      <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Phone Number</Label>
+                      <Input id="phone" type="tel" name="phoneNumber" placeholder="+1 234 567 890" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
+                    </div>
+                    <div className="space-y-2 text-text-primary">
+                      <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Company Name</Label>
+                      <Input id="company" type="text" name="companyName" placeholder="Acme Corp" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" />
+                    </div>
+                  </div>
+                  <div className="space-y-2 text-text-primary">
+                    <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Website URL (Optional)</Label>
+                    <Input id="website" type="url" name="website" placeholder="https://..." className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2 text-text-primary">
+                      <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Budget</Label>
+                      <select id="budget" name="budget" className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer" required>
+                        <option value="<50k">&lt; Rs 50,000</option>
+                        <option value="50k-100k">Rs 50,000 - Rs 100,000</option>
+                        <option value="100k-200k">Rs 100,000 - Rs 200,000</option>
+                        <option value="200k+">Rs 200,000+</option>
+                      </select>
+                    </div>
+                    <div className="space-y-2 text-text-primary">
+                      <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Services</Label>
+                      <select id="services" name="services" className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer" required>
+                        <option value="wordpress">Wordpress Web Development</option>
+                        <option value="shopify">Shopify Store Designing</option>
+                        <option value="custom_web">Custom Web Development</option>
+                        <option value="seo">Search Engine Optimization(SEO)</option>
+                        <option value="marketing">Performance Marketing(Meta & Google)</option>
+                        <option value="audit">Free Audit / Consultation</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="space-y-2 text-text-primary">
+                    <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Message</Label>
+                    <textarea id="message" name="message" placeholder="Tell us about your challenges..." className="w-full h-32 bg-surface/50 border border-white/10 rounded-[5px] p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none" required></textarea>
+                  </div>
+                  <Button type="submit" size="lg" className="w-full h-16 text-lg font-black shadow-glow group">
+                    CLAIM MY GROWTH STRATEGY <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
+                  </Button>
+                </form>
+              ) : (
+                <div className="text-center py-20">
+                  <div className="w-24 h-24 bg-primary/10 rounded-[5px] flex items-center justify-center mx-auto mb-8">
+                    <CheckCircle2 size={48} className="text-primary" />
+                  </div>
+                  <h3 className="text-3xl font-black mb-4">Request Sent</h3>
+                  <p className="text-text-secondary font-sans text-lg">Our scale specialists will review your submission and respond within 24 hours.</p>
+                </div>
+              )}
+            </GlassCard>
           </div>
         </Section>
       </main>
