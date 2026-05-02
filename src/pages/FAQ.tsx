@@ -4,6 +4,7 @@ import { Footer } from '@/src/components/layout/Footer';
 import { motion } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
 import { SEO } from '@/src/components/ui/SEO';
+import Antigravity from '@/src/components/ui/Antigravity';
 
 const faqs = [
   {
@@ -39,7 +40,25 @@ export default function FAQ() {
       />
       <Navbar />
       
-      <main className="flex-grow pt-32 pb-20 px-6">
+      <main className="flex-grow pt-32 pb-20 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+          <Antigravity
+            count={400}
+            magnetRadius={8}
+            ringRadius={7}
+            waveSpeed={0.4}
+            waveAmplitude={1}
+            particleSize={1.5}
+            lerpSpeed={0.05}
+            autoAnimate
+            particleVariance={1}
+            rotationSpeed={0}
+            depthFactor={1}
+            pulseSpeed={3}
+            particleShape="capsule"
+            fieldStrength={10}
+          />
+        </div>
         <div className="container max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <motion.span 

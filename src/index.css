@@ -98,8 +98,12 @@
     @apply bg-[var(--glass-bg)] border border-[var(--glass-border)] backdrop-blur-3xl transition-all duration-300;
   }
   
-  .glass-hover {
-    @apply hover:bg-white/[0.04] hover:border-white/[0.1];
+  .glass:hover {
+    @apply border-black;
+  }
+
+  .dark .glass:hover {
+    @apply border-[#ff6000] shadow-[0_0_15px_rgba(255,96,0,0.2)];
   }
 
   .text-gradient {
@@ -108,13 +112,6 @@
 
   .bg-gradient {
     @apply bg-linear-to-br from-primary to-primary-light;
-  }
-
-  .hover-border-dark {
-    @apply transition-colors duration-300;
-  }
-  .hover-border-dark:hover {
-    @apply border-text-primary/20;
   }
 }
 

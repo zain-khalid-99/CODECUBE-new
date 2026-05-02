@@ -20,6 +20,7 @@ import { Section } from '@/src/components/ui/Section';
 import { Button } from '@/src/components/ui/button';
 import { GlassCard } from '@/src/components/ui/GlassCard';
 import { SEO } from '@/src/components/ui/SEO';
+import Antigravity from '@/src/components/ui/Antigravity';
 
 export default function Services() {
   const containerVariants = {
@@ -112,6 +113,24 @@ export default function Services() {
       <main className="flex-grow pt-20">
         {/* HERO SECTION */}
         <Section className="relative pt-24 pb-12 overflow-hidden text-center">
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+            <Antigravity
+              count={400}
+              magnetRadius={8}
+              ringRadius={7}
+              waveSpeed={0.4}
+              waveAmplitude={1}
+              particleSize={1.5}
+              lerpSpeed={0.05}
+              autoAnimate
+              particleVariance={1}
+              rotationSpeed={0}
+              depthFactor={1}
+              pulseSpeed={3}
+              particleShape="capsule"
+              fieldStrength={10}
+            />
+          </div>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/10 blur-[150px] rounded-[5px] -z-10" />
           <motion.div 
             initial="hidden"

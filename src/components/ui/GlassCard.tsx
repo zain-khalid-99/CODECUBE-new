@@ -32,7 +32,7 @@ export const GlassCard = ({ children, className, delay = 0 }: GlassCardProps) =>
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'glass rounded-[5px] p-6 relative overflow-hidden group will-change-transform hover-border-dark',
+        'glass rounded-[5px] p-6 relative overflow-hidden group will-change-transform',
         className
       )}
     >

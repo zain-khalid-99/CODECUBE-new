@@ -7,6 +7,7 @@ import { ChevronRight, HelpCircle, CheckCircle2, AlertCircle, ArrowRight } from 
 import { Button } from '../ui/button';
 import { Link } from 'react-router-dom';
 import { PricingSection } from '../ui/PricingSection';
+import Antigravity from '../ui/Antigravity';
 
 interface FAQItem {
   question: string;
@@ -95,29 +96,48 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
       <Navbar />
       
       <main className="pt-32">
-        {/* HERO */}
-        <section className="container mx-auto px-6 py-20 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
-              {hero.title}
-            </h1>
-            <p className="text-xl md:text-2xl text-text-secondary leading-relaxed font-sans mb-12">
-              {hero.subtitle}
-            </p>
-            <div className="flex flex-col items-center gap-6">
-              <Link to="/contact">
-                <Button size="lg" className="h-16 px-10 text-lg font-black shadow-strong-glow group">
-                  {hero.ctaLabel || 'GET STARTED'}
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
+        <section className="relative overflow-hidden py-20">
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+            <Antigravity
+              count={400}
+              magnetRadius={8}
+              ringRadius={7}
+              waveSpeed={0.4}
+              waveAmplitude={1}
+              particleSize={1.5}
+              lerpSpeed={0.05}
+              autoAnimate
+              particleVariance={1}
+              rotationSpeed={0}
+              depthFactor={1}
+              pulseSpeed={3}
+              particleShape="capsule"
+              fieldStrength={10}
+            />
+          </div>
+          <div className="container mx-auto px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-4xl mx-auto"
+            >
+              <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
+                {hero.title}
+              </h1>
+              <p className="text-xl md:text-2xl text-text-secondary leading-relaxed font-sans mb-12">
+                {hero.subtitle}
+              </p>
+              <div className="flex flex-col items-center gap-6">
+                <Link to="/contact">
+                  <Button size="lg" className="h-16 px-10 text-lg font-black shadow-strong-glow group">
+                    {hero.ctaLabel || 'GET STARTED'}
+                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </section>
 
         {/* PROBLEM SECTION */}

@@ -32,6 +32,8 @@ import { Label } from '@/src/components/ui/label';
 import { GridPattern } from '@/src/components/ui/grid-pattern';
 import { cn } from '@/src/lib/utils';
 import { PricingSection } from '@/src/components/ui/PricingSection';
+import BorderGlow from '@/src/components/ui/BorderGlow';
+import Antigravity from '@/src/components/ui/Antigravity';
 
 const Section = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => (
   <section className={`px-6 py-12 md:py-20 ${className}`}>
@@ -132,7 +134,25 @@ export default function Home() {
       
       <main className="flex-grow pt-20">
         {/* HERO SECTION */}
-        <Section className="relative pt-32 md:pt-48 lg:pt-40 overflow-hidden text-center min-h-[80vh] flex items-center bg-background">
+        <Section className="relative pt-32 md:pt-48 lg:pt-40 overflow-hidden text-center min-h-[80vh] flex items-center">
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+            <Antigravity
+              count={400}
+              magnetRadius={8}
+              ringRadius={7}
+              waveSpeed={0.4}
+              waveAmplitude={1}
+              particleSize={1.5}
+              lerpSpeed={0.05}
+              autoAnimate
+              particleVariance={1}
+              rotationSpeed={0}
+              depthFactor={1}
+              pulseSpeed={3}
+              particleShape="capsule"
+              fieldStrength={10}
+            />
+          </div>
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--glow-color),_transparent_70%)] opacity-70" />
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/20 blur-[120px] rounded-[5px] -z-10 opacity-50" />
           <GridPattern
@@ -229,16 +249,26 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, i) => (
-              <GlassCard key={i} className="p-8 group hover-border-dark hover:bg-primary/[0.02]">
-                <div className="w-14 h-14 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                  {React.cloneElement(service.icon as React.ReactElement, { size: 28 })}
+              <BorderGlow 
+                key={i} 
+                borderRadius={5}
+                backgroundColor="var(--surface)"
+                glowColor="22 100% 50%"
+                colors={['#ff6000', '#ff8000', '#ffa500']}
+                className="h-full"
+                glowRadius={30}
+              >
+                <div className="p-8 group h-full">
+                  <div className="w-14 h-14 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                    {React.cloneElement(service.icon as React.ReactElement, { size: 28 })}
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                  <p className="text-text-secondary mb-8 text-sm font-sans leading-relaxed">{service.desc}</p>
+                  <Link to={service.link} className="inline-flex items-center text-primary font-black text-xs tracking-[0.2em] uppercase gap-2 hover:gap-4 transition-all">
+                    EXPLORE <ArrowRight size={16} />
+                  </Link>
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                <p className="text-text-secondary mb-8 text-sm font-sans leading-relaxed">{service.desc}</p>
-                <Link to={service.link} className="inline-flex items-center text-primary font-black text-xs tracking-[0.2em] uppercase gap-2 hover:gap-4 transition-all">
-                  EXPLORE <ArrowRight size={16} />
-                </Link>
-              </GlassCard>
+              </BorderGlow>
             ))}
           </div>
         </Section>
@@ -425,7 +455,7 @@ export default function Home() {
               { title: "Custom n8n", desc: "Tailored automation solutions for maximum efficiency." },
               { title: "Scalable Systems", desc: "Designed for sustainable, long-term business growth." }
             ].map((item, i) => (
-              <div key={i} className="p-10 glass rounded-[5px] border-primary/5 hover:border-primary/20 transition-all hover:-translate-y-2">
+              <div key={i} className="p-10 glass rounded-[5px] border-primary/5 transition-all hover:-translate-y-2">
                 <div className="w-12 h-12 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8">
                   <CheckCircle2 size={28} />
                 </div>

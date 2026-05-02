@@ -357,7 +357,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ categoryId }) =>
                 <GlassCard 
                   key={plan.name} 
                   className={`p-8 md:p-10 flex flex-col relative overflow-hidden group transition-all duration-300 ${
-                    plan.popular ? 'border-primary/50 shadow-strong-glow bg-primary/5 -translate-y-4' : 'border-white/5 hover:border-white/20'
+                    plan.popular ? 'border-primary/50 shadow-strong-glow bg-primary/5 -translate-y-4' : 'border-white/5'
                   }`}
                 >
                   {plan.popular && (

@@ -22,6 +22,7 @@ import { GlassCard } from '@/src/components/ui/GlassCard';
 import { Input } from '@/src/components/ui/input';
 import { Label } from '@/src/components/ui/label';
 import { SEO } from '@/src/components/ui/SEO';
+import Antigravity from '@/src/components/ui/Antigravity';
 
 interface AuditFormData {
   fullName: string;
@@ -88,6 +89,24 @@ export default function FreeAudit() {
       <main className="flex-grow pt-20">
         {/* HERO */}
         <Section className="relative pt-24 pb-12 overflow-hidden text-center">
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+            <Antigravity
+              count={400}
+              magnetRadius={8}
+              ringRadius={7}
+              waveSpeed={0.4}
+              waveAmplitude={1}
+              particleSize={1.5}
+              lerpSpeed={0.05}
+              autoAnimate
+              particleVariance={1}
+              rotationSpeed={0}
+              depthFactor={1}
+              pulseSpeed={3}
+              particleShape="capsule"
+              fieldStrength={10}
+            />
+          </div>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[600px] bg-primary/10 blur-[150px] rounded-[5px] -z-10" />
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -114,7 +133,7 @@ export default function FreeAudit() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whatYouGet.map((item, i) => (
-              <GlassCard key={i} className="p-10 border-primary/5 hover:border-primary/20 transition-all flex flex-col items-center text-center group">
+              <GlassCard key={i} className="p-10 border-primary/5 transition-all flex flex-col items-center text-center group">
                 <div className="w-16 h-16 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
