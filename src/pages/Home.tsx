@@ -261,7 +261,7 @@ export default function Home() {
               >
                 <div className="p-8 group h-full">
                   <div className="w-14 h-14 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                    {React.cloneElement(service.icon as React.ReactElement, { size: 28 })}
+                    {React.cloneElement(service.icon as React.ReactElement<{size?: number}>, { size: 28 })}
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                   <p className="text-text-secondary mb-8 text-sm font-sans leading-relaxed">{service.desc}</p>
@@ -346,7 +346,7 @@ export default function Home() {
                       transition={{ delay: i * 0.2 }}
                       className="w-24 h-24 bg-background border-4 border-primary/20 rounded-[5px] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-500 shadow-xl"
                     >
-                      {React.cloneElement(p.icon as React.ReactElement, { size: 36 })}
+                      {React.cloneElement(p.icon as React.ReactElement<{size?: number}>, { size: 36 })}
                     </motion.div>
                     <div className="absolute -top-3 -right-3 w-10 h-10 bg-primary text-primary-foreground rounded-[5px] text-sm font-black flex items-center justify-center border-4 border-background">
                       {p.step}
