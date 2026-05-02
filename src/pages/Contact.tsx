@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'motion/react';
-import { 
-  Mail, 
-  MapPin, 
-  ArrowRight, 
-  Send, 
+import {
+  Mail,
+  MapPin,
+  ArrowRight,
+  Send,
   Sparkles,
   CheckCircle2,
   Clock,
@@ -43,8 +43,8 @@ export default function Contact() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxMdcxVdmmHPMFMTxKYxK2T9kTKir31_emDqrU9soqKR4R5jJnUGphJzklbDeV9uP8P/exec";
-      
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyK50yHJ_WpBIRI-QmJxHSGecqrIfbQR4MGi3gVo3Nyp0l0WGjthRYIq8p8ZjtRzpZ0/exec";
+
       const payload = {
         form_type: "Contact Page Form",
         full_name: data.fullName,
@@ -66,7 +66,7 @@ export default function Contact() {
         },
         body: JSON.stringify(payload)
       });
-      
+
       setSubmitted(true);
     } catch (err) {
       alert("Error submitting form");
@@ -76,12 +76,12 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-text-primary">
-      <SEO 
-        title="Contact Codecubes | Growth Strategy & Automation Consultation" 
+      <SEO
+        title="Contact Codecubes | Growth Strategy & Automation Consultation"
         description="Book a call with Codecubes. Let’s discuss your digital growth strategy, web development needs, or n8n automation workflows. We bridge the gap between traffic and conversions."
       />
       <Navbar />
-      
+
       <main className="flex-grow pt-20">
         {/* HERO SECTION */}
         <Section className="relative pt-24 pb-12 overflow-hidden text-center">
@@ -104,7 +104,7 @@ export default function Contact() {
             />
           </div>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/10 blur-[150px] rounded-[5px] -z-10" />
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto"
@@ -123,62 +123,62 @@ export default function Contact() {
           <div className="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto items-start">
             {/* INFO SIDE */}
             <div className="lg:col-span-5 space-y-12">
-               <div>
-                  <h2 className="text-4xl font-black mb-8">What Happens <span className="text-gradient">Next</span></h2>
-                  <div className="space-y-8">
-                    {[
-                      { step: "Review", text: "We analyze your requirements and current setup.", icon: <Search /> },
-                      { step: "Response", text: "Our team reaches out with initial insights and recommendations.", icon: <MessageSquare /> },
-                      { step: "Discussion", text: "We schedule a detailed conversation to align on strategy.", icon: <Zap /> }
-                    ].map((s) => (
-                      <div key={s.step} className="flex gap-6 items-start group">
-                        <div className="w-12 h-12 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
-                          {React.cloneElement(s.icon as React.ReactElement, { size: 20 })}
-                        </div>
-                        <div>
-                          <h4 className="font-black text-xl mb-1">{s.step}</h4>
-                          <p className="text-text-secondary font-sans leading-relaxed">{s.text}</p>
-                        </div>
+              <div>
+                <h2 className="text-4xl font-black mb-8">What Happens <span className="text-gradient">Next</span></h2>
+                <div className="space-y-8">
+                  {[
+                    { step: "Review", text: "We analyze your requirements and current setup.", icon: <Search /> },
+                    { step: "Response", text: "Our team reaches out with initial insights and recommendations.", icon: <MessageSquare /> },
+                    { step: "Discussion", text: "We schedule a detailed conversation to align on strategy.", icon: <Zap /> }
+                  ].map((s) => (
+                    <div key={s.step} className="flex gap-6 items-start group">
+                      <div className="w-12 h-12 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
+                        {React.cloneElement(s.icon as React.ReactElement, { size: 20 })}
                       </div>
-                    ))}
-                  </div>
-               </div>
-
-               <div className="glass p-10 rounded-[5px] border-primary/20 bg-primary/5">
-                  <h4 className="text-2xl font-black mb-4">Why Reach Out?</h4>
-                  <ul className="space-y-4">
-                    {[
-                      "Get expert guidance tailored to your business",
-                      "Identify gaps in your current systems",
-                      "Explore scalable solutions for growth",
-                      "Understand how automation can improve efficiency"
-                    ].map((item) => (
-                      <li key={item} className="flex gap-3 items-center font-bold text-text-primary text-sm">
-                        <div className="w-5 h-5 bg-primary/20 rounded-[5px] flex items-center justify-center text-primary">
-                          <CheckCircle2 size={12} />
-                        </div>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-               </div>
-
-               <div className="p-8 border-y border-white/5 space-y-6">
-                  <div className="flex items-center gap-4 text-text-primary">
-                    <Mail className="text-primary" />
-                    <div>
-                      <div className="text-xs uppercase font-black tracking-widest text-text-muted">Email Us</div>
-                      <div className="font-bold">hello@codecubes.com</div>
+                      <div>
+                        <h4 className="font-black text-xl mb-1">{s.step}</h4>
+                        <p className="text-text-secondary font-sans leading-relaxed">{s.text}</p>
+                      </div>
                     </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="glass p-10 rounded-[5px] border-primary/20 bg-primary/5">
+                <h4 className="text-2xl font-black mb-4">Why Reach Out?</h4>
+                <ul className="space-y-4">
+                  {[
+                    "Get expert guidance tailored to your business",
+                    "Identify gaps in your current systems",
+                    "Explore scalable solutions for growth",
+                    "Understand how automation can improve efficiency"
+                  ].map((item) => (
+                    <li key={item} className="flex gap-3 items-center font-bold text-text-primary text-sm">
+                      <div className="w-5 h-5 bg-primary/20 rounded-[5px] flex items-center justify-center text-primary">
+                        <CheckCircle2 size={12} />
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="p-8 border-y border-white/5 space-y-6">
+                <div className="flex items-center gap-4 text-text-primary">
+                  <Mail className="text-primary" />
+                  <div>
+                    <div className="text-xs uppercase font-black tracking-widest text-text-muted">Email Us</div>
+                    <div className="font-bold">hello@codecubes.com</div>
                   </div>
-                  <div className="flex items-center gap-4 text-text-primary">
-                    <Clock className="text-primary" />
-                    <div>
-                      <div className="text-xs uppercase font-black tracking-widest text-text-muted">Response Time</div>
-                      <div className="font-bold">Within 24–48 hours</div>
-                    </div>
+                </div>
+                <div className="flex items-center gap-4 text-text-primary">
+                  <Clock className="text-primary" />
+                  <div>
+                    <div className="text-xs uppercase font-black tracking-widest text-text-muted">Response Time</div>
+                    <div className="font-bold">Within 24–48 hours</div>
                   </div>
-               </div>
+                </div>
+              </div>
             </div>
 
             {/* FORM SIDE */}
@@ -306,7 +306,7 @@ export default function Contact() {
 
         {/* FINAL SECTION */}
         <Section className="pb-40">
-           <motion.div
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
