@@ -57,7 +57,7 @@ export const Navbar = () => {
           backgroundColor, 
           backdropFilter: 'blur(16px)', 
         }}
-        className="max-w-7xl w-full flex items-center justify-between px-6 h-18 rounded-[5px] border border-white/10 shadow-2xl pointer-events-auto relative transition-all"
+        className="max-w-7xl w-full flex items-center justify-between px-6 h-18 rounded-[5px] border border-primary shadow-2xl pointer-events-auto relative transition-all"
       >
         <Link to="/" className="flex items-center gap-2 group cursor-pointer z-[101]">
           <div className="w-8 h-8 bg-primary rounded-[5px] flex items-center justify-center shadow-glow group-hover:shadow-strong-glow transition-all duration-300">
@@ -90,7 +90,7 @@ export const Navbar = () => {
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[700px] z-[110]"
                 >
-                  <div className="rounded-[5px] p-10 shadow-2xl border border-white/10 shadow-primary/5 bg-background">
+                  <div className="rounded-[5px] p-10 shadow-2xl border border-primary shadow-primary/5 bg-background">
                     <div className="grid grid-cols-3 gap-10">
                       {products.map((cat) => (
                         <div key={cat.category}>
@@ -164,7 +164,7 @@ export const Navbar = () => {
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="lg:hidden absolute top-[110%] left-0 right-0 glass p-6 flex flex-col gap-2 rounded-[5px] border border-white/10 shadow-2xl origin-top overflow-y-auto max-h-[85vh] bg-background/95 backdrop-blur-3xl z-[150] pointer-events-auto"
+              className="lg:hidden absolute top-[110%] left-0 right-0 glass p-6 flex flex-col gap-2 rounded-[5px] border border-primary shadow-2xl origin-top overflow-y-auto max-h-[85vh] bg-background/95 backdrop-blur-3xl z-[150] pointer-events-auto"
             >
               <Link
                 to="/"

@@ -133,7 +133,7 @@ export default function Contact() {
                   ].map((s) => (
                     <div key={s.step} className="flex gap-6 items-start group">
                       <div className="w-12 h-12 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
-                        {React.cloneElement(s.icon as React.ReactElement, { size: 20 })}
+                        {React.cloneElement(s.icon as React.ReactElement<{size?: number}>, { size: 20 })}
                       </div>
                       <div>
                         <h4 className="font-black text-xl mb-1">{s.step}</h4>
