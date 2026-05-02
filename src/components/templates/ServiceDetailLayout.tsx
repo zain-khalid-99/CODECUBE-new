@@ -315,15 +315,7 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
             <h2 className="text-4xl font-black mb-16 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
-                <div key={i} className="glass p-8 rounded-[5px] border-white/10">
-                  <h3 className="text-xl font-black mb-4 flex gap-3 items-start">
-                    <HelpCircle className="text-primary mt-1 flex-shrink-0" size={20} />
-                    {faq.question}
-                  </h3>
-                  <p className="text-text-secondary font-sans leading-relaxed pl-8">
-                    {faq.answer}
-                  </p>
-                </div>
+                <FAQItemComponent key={i} {...faq} />
               ))}
             </div>
           </div>
