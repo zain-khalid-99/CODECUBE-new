@@ -26,12 +26,12 @@ export function FloatingHeader() {
 		<header
 			className={cn(
 				'sticky top-5 z-50',
-				'mx-auto w-full max-w-3xl rounded-lg border shadow',
+				'mx-auto w-full max-w-3xl rounded-[5px] border shadow',
 				'bg-background/95 supports-[backdrop-filter]:bg-background/80 backdrop-blur-lg',
 			)}
 		>
 			<nav className="mx-auto flex items-center justify-between p-1.5">
-				<div className="hover:bg-accent flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 duration-100">
+				<div className="hover:bg-accent flex cursor-pointer items-center gap-2 rounded-[5px] px-2 py-1 duration-100">
 					<Grid2x2PlusIcon className="size-5" />
 					<p className="font-mono text-base font-bold">Asme</p>
 				</div>

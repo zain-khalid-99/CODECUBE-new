@@ -88,6 +88,7 @@ const WordpressPage = () => {
         { question: "Will I be able to manage the website myself?", answer: "Yes. We build websites that are easy to manage and provide guidance where needed." },
         { question: "Do you use page builders like Elementor?", answer: "Yes, depending on project requirements, we use tools that balance flexibility and performance." }
       ]}
+      pricingCategoryId="wordpress"
     />
   );
 };

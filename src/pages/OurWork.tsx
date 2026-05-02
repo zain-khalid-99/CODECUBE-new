@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  ArrowUpRight, 
-  X, 
-  ExternalLink, 
-  TrendingUp, 
-  Target, 
+import {
+  X,
+  ExternalLink,
+  TrendingUp,
+  Target,
   Zap,
   Globe,
   Database,
-  BarChart3
+  BarChart3,
 } from 'lucide-react';
 import { Navbar } from '@/src/components/layout/Navbar';
 import { Footer } from '@/src/components/layout/Footer';
@@ -17,6 +17,8 @@ import { Section } from '@/src/components/ui/Section';
 import { Button } from '@/src/components/ui/button';
 import { GlassCard } from '@/src/components/ui/GlassCard';
 import { Link } from 'react-router-dom';
+import { SEO } from '@/src/components/ui/SEO';
+import Antigravity from '@/src/components/ui/Antigravity';
 
 interface Project {
   id: string;
@@ -27,6 +29,8 @@ interface Project {
   problem: string;
   solution: string;
   results: { label: string; value: string; icon: React.ReactNode }[];
+  liveUrl?: string;
+  detailUrl?: string;
 }
 
 const projects: Project[] = [
@@ -41,8 +45,8 @@ const projects: Project[] = [
     results: [
       { label: 'Fuel Costs', value: '-15%', icon: <Zap size={18} /> },
       { label: 'Time Saved', value: '400h/mo', icon: <TrendingUp size={18} /> },
-      { label: 'Efficiency', value: '+22%', icon: <Target size={18} /> }
-    ]
+      { label: 'Efficiency', value: '+22%', icon: <Target size={18} /> },
+    ],
   },
   {
     id: 'nexus',
@@ -55,8 +59,8 @@ const projects: Project[] = [
     results: [
       { label: 'Mobile CVR', value: '+140%', icon: <TrendingUp size={18} /> },
       { label: 'Load Time', value: '0.8s', icon: <Zap size={18} /> },
-      { label: 'Revenue', value: '3x Growth', icon: <Globe size={18} /> }
-    ]
+      { label: 'Revenue', value: '3x Growth', icon: <Globe size={18} /> },
+    ],
   },
   {
     id: 'vortex',
@@ -69,8 +73,8 @@ const projects: Project[] = [
     results: [
       { label: 'CAC Reduction', value: '40%', icon: <Target size={18} /> },
       { label: 'Pipeline Val', value: '$4.2M', icon: <BarChart3 size={18} /> },
-      { label: 'ROAS', value: '5.2x', icon: <TrendingUp size={18} /> }
-    ]
+      { label: 'ROAS', value: '5.2x', icon: <TrendingUp size={18} /> },
+    ],
   },
   {
     id: 'aether',
@@ -83,40 +87,223 @@ const projects: Project[] = [
     results: [
       { label: 'Support Def', value: '82%', icon: <Zap size={18} /> },
       { label: 'Sales Booked', value: '+45%', icon: <Database size={18} /> },
-      { label: 'Response', value: '< 30s', icon: <TrendingUp size={18} /> }
-    ]
-  }
+      { label: 'Response', value: '< 30s', icon: <TrendingUp size={18} /> },
+    ],
+  },
+  {
+    id: 'accessory-booth',
+    title: 'Accessory Booth',
+    category: 'Web Development',
+    image: '/images/accessoryboothstore.png',
+    overview:
+      'High-converting WooCommerce store for a mobile accessories brand — 100+ products, premium UI/UX, and a scalable architecture built for paid ad campaigns.',
+    problem:
+      'The brand had no digital presence and needed a professional, conversion-ready store to launch online sales and support Meta Ads campaigns.',
+    solution:
+      'Built a complete e-commerce store on WordPress + WooCommerce with WoodMart theme, structured product categories, multi-level navigation, and optimized product pages with clear CTAs.',
+    results: [
+      { label: 'Products Live', value: '100+', icon: <Globe size={18} /> },
+      { label: 'Responsive', value: '100%', icon: <TrendingUp size={18} /> },
+      { label: 'Architecture', value: 'Scalable', icon: <BarChart3 size={18} /> },
+    ],
+    liveUrl: 'https://accessorybooth.com/',
+    detailUrl: '/work/accessory-booth',
+  },
 ];
 
-import { SEO } from '@/src/components/ui/SEO';
+/* ─────────────────────────────────────────────────────────────────────────
+   Portal Modal
+   Rendered directly into document.body via createPortal — this bypasses
+   the `will-change: transform` on <body> that breaks `position: fixed`.
+───────────────────────────────────────────────────────────────────────── */
+function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  // Lock body scroll while modal is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      className="bg-black/75 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.94, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.94, y: 20 }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        style={{ width: '70%', height: '85vh' }}
+        className="relative bg-background border border-white/10 rounded-[5px] overflow-hidden flex flex-col shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* ── Hero image — top 40% ── */}
+        <div className="relative flex-shrink-0 overflow-hidden" style={{ height: '40%' }}>
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover object-top"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
+
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-9 h-9 bg-black/60 backdrop-blur-md rounded-[5px] flex items-center justify-center text-white hover:text-primary border border-white/10 hover:border-primary/50 transition-all z-10"
+            aria-label="Close"
+          >
+            <X size={18} />
+          </button>
+
+          {/* Category + title overlaid at image bottom */}
+          <div className="absolute bottom-0 left-0 right-0 px-8 pb-6">
+            <span className="inline-block text-primary text-xs font-bold tracking-widest uppercase mb-2 font-sans bg-black/50 backdrop-blur-sm px-3 py-1 rounded-[5px] border border-primary/20">
+              {project.category}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-white leading-tight drop-shadow-lg">
+              {project.title}
+            </h2>
+          </div>
+        </div>
+
+        {/* ── Scrollable content body ── */}
+        <div className="flex-1 overflow-y-auto px-8 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+
+            {/* Left — text content */}
+            <div className="lg:col-span-2 space-y-8">
+              <section>
+                <h4 className="text-white font-bold mb-3 uppercase tracking-widest text-xs font-sans border-b border-white/10 pb-3">
+                  Overview
+                </h4>
+                <p className="text-text-secondary leading-relaxed text-base font-sans">
+                  {project.overview}
+                </p>
+              </section>
+              <section>
+                <h4 className="border-l-2 border-red-500/60 pl-4 text-white font-bold mb-3 uppercase tracking-widest text-xs font-sans">
+                  The Problem
+                </h4>
+                <p className="text-text-secondary leading-relaxed font-sans">
+                  {project.problem}
+                </p>
+              </section>
+              <section>
+                <h4 className="border-l-2 border-green-500/60 pl-4 text-white font-bold mb-3 uppercase tracking-widest text-xs font-sans">
+                  Our Solution
+                </h4>
+                <p className="text-text-secondary leading-relaxed font-sans">
+                  {project.solution}
+                </p>
+              </section>
+            </div>
+
+            {/* Right — metrics + CTAs */}
+            <div className="space-y-3">
+              <h4 className="text-white font-bold mb-4 uppercase tracking-widest text-xs font-sans border-b border-white/10 pb-3">
+                Impact
+              </h4>
+              {project.results.map((result, i) => (
+                <div
+                  key={i}
+                  className="glass p-4 rounded-[5px] border-primary/10 hover:border-primary/30 transition-all flex items-center justify-between"
+                >
+                  <div>
+                    <p className="text-text-muted text-xs uppercase mb-1 font-sans">{result.label}</p>
+                    <p className="text-xl font-heading font-black text-white tracking-tight">{result.value}</p>
+                  </div>
+                  <div className="text-primary opacity-60">{result.icon}</div>
+                </div>
+              ))}
+
+              <div className="pt-3 space-y-2">
+                {project.detailUrl && (
+                  <Link to={project.detailUrl} onClick={onClose} className="block">
+                    <Button variant="outline" className="w-full h-11 text-sm">
+                      View Full Case Study
+                    </Button>
+                  </Link>
+                )}
+                {project.liveUrl && (
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="block">
+                    <Button variant="outline" className="w-full h-11 gap-2 text-sm">
+                      <ExternalLink size={14} /> View Live Website
+                    </Button>
+                  </a>
+                )}
+                <Link to="/free-audit" onClick={onClose} className="block">
+                  <Button className="w-full h-12 shadow-glow">Start Your Project</Button>
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>,
+    document.body
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Main Page
+───────────────────────────────────────────────────────────────────────── */
 export default function OurWork() {
   const [filter, setFilter] = useState<'All' | 'Web Development' | 'Marketing' | 'Automation'>('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === filter);
+  const filteredProjects = filter === 'All'
+    ? projects
+    : projects.filter((p) => p.category === filter);
 
   return (
     <div className="flex flex-col min-h-screen">
-      <SEO 
-        title="Web Portfolio & Success Stories | Codecubes SEO & Automation Agency" 
+      <SEO
+        title="Web Portfolio & Success Stories | Codecubes SEO & Automation Agency"
         description="Explore our high-impact case studies. From conversion-driven e-commerce sites to autonomous n8n workflows, see how we deliver measurable scaling for businesses."
       />
       <Navbar />
-      
+
       <main className="flex-grow pt-20">
-        <Section className="relative pt-24 pb-12 overflow-visible">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 blur-[120px] rounded-full -z-10" />
-          <motion.div 
+        <Section className="relative pt-24 pb-12 overflow-hidden">
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+            <Antigravity
+              count={400}
+              magnetRadius={8}
+              ringRadius={7}
+              waveSpeed={0.4}
+              waveAmplitude={1}
+              particleSize={1.5}
+              lerpSpeed={0.05}
+              autoAnimate
+              particleVariance={1}
+              rotationSpeed={0}
+              depthFactor={1}
+              pulseSpeed={3}
+              particleShape="capsule"
+              fieldStrength={10}
+            />
+          </div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 blur-[120px] rounded-[5px] -z-10" />
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="mb-6">Proven <span className="text-gradient">Success Stories</span></h1>
+            <h1 className="mb-6">
+              Proven <span className="text-gradient">Success Stories</span>
+            </h1>
             <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed font-sans">
-              Real projects. Scalable results. We engineer digital systems that deliver <span className="text-text-primary font-bold">consistent business impact</span> through performance-driven design and execution.
+              Real projects. Scalable results. We engineer digital systems that deliver{' '}
+              <span className="text-text-primary font-bold">consistent business impact</span>{' '}
+              through performance-driven design and execution.
             </p>
           </motion.div>
         </Section>
@@ -124,13 +311,13 @@ export default function OurWork() {
         {/* Filters */}
         <Section className="py-0">
           <div className="flex flex-wrap justify-center gap-4 mb-16">
-            {['All', 'Web Development', 'Marketing', 'Automation'].map((f) => (
+            {(['All', 'Web Development', 'Marketing', 'Automation'] as const).map((f) => (
               <button
                 key={f}
-                onClick={() => setFilter(f as any)}
-                className={`px-6 py-2 rounded-pill font-medium transition-all ${
-                  filter === f 
-                    ? 'bg-primary text-white shadow-glow' 
+                onClick={() => setFilter(f)}
+                className={`px-6 py-2 rounded-[5px] font-medium transition-all ${
+                  filter === f
+                    ? 'bg-primary text-white shadow-glow'
                     : 'glass text-text-secondary hover:text-white'
                 }`}
               >
@@ -139,33 +326,35 @@ export default function OurWork() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-8">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  transition={{ duration: 0.5, delay: index * 0.1, type: 'spring', stiffness: 100 }}
+                  className="break-inside-avoid hover:-translate-y-2 transition-transform duration-500"
                 >
-                  <button 
+                  <button
                     onClick={() => setSelectedProject(project)}
                     className="w-full text-left group"
                   >
-                    <GlassCard className="p-0 overflow-hidden h-full flex flex-col border-white/[0.04] group hover:border-primary/40 transition-colors">
-                      <div className="aspect-video relative overflow-hidden">
-                        <motion.img 
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ duration: 0.6, ease: 'easeOut' }}
-                          src={project.image} 
+                    <GlassCard className="p-0 overflow-hidden h-full flex flex-col border-white/[0.04] group transition-colors">
+                      <div className="relative overflow-hidden">
+                        <motion.img
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.8, ease: 'easeOut' }}
+                          src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 transition-all duration-700"
+                          className={`w-full object-cover object-top grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100 transition-all duration-700 ${
+                            index % 2 === 0 ? 'h-[300px]' : 'h-[450px]'
+                          }`}
                         />
-                        <motion.div 
-                          className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <div className="w-12 h-12 glass rounded-full flex items-center justify-center text-primary shadow-glow scale-0 group-hover:scale-100 transition-transform duration-500">
+                        <motion.div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <div className="w-12 h-12 glass rounded-[5px] flex items-center justify-center text-primary shadow-glow scale-0 group-hover:scale-100 transition-transform duration-500">
                             <ExternalLink size={20} />
                           </div>
                         </motion.div>
@@ -174,7 +363,9 @@ export default function OurWork() {
                         <span className="text-primary text-xs font-bold tracking-widest uppercase mb-2 block font-sans">
                           {project.category}
                         </span>
-                        <h3 className="text-xl mb-0 transition-colors group-hover:text-primary">{project.title}</h3>
+                        <h3 className="text-xl mb-0 transition-colors group-hover:text-primary">
+                          {project.title}
+                        </h3>
                       </div>
                     </GlassCard>
                   </button>
@@ -187,7 +378,7 @@ export default function OurWork() {
         {/* Final CTA */}
         <Section className="pb-40">
           <GlassCard className="p-20 text-center relative overflow-hidden bg-primary/5 border-primary/20">
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-full -z-10" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-[5px] -z-10" />
             <h2 className="mb-6">Want results like these?</h2>
             <p className="text-text-secondary text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-sans">
               Your business is one system away from its next major breakthrough. Let's find it together.
@@ -203,74 +394,13 @@ export default function OurWork() {
 
       <Footer />
 
-      {/* Project Modal */}
+      {/* Modal — rendered via portal directly into document.body */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-background/90 backdrop-blur-md"
-            onClick={() => setSelectedProject(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 50, scale: 0.95 }}
-              className="glass max-w-4xl w-full max-h-[90vh] overflow-y-auto p-8 md:p-12 relative border-primary/20"
-              onClick={e => e.stopPropagation()}
-            >
-              <button 
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 text-text-secondary hover:text-white transition-colors"
-              >
-                <X size={24} />
-              </button>
-
-              <div className="mb-10">
-                <span className="text-primary text-sm font-bold tracking-widest uppercase mb-2 block font-sans">
-                  {selectedProject.category}
-                </span>
-                <h2 className="text-4xl md:text-5xl">{selectedProject.title}</h2>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div className="lg:col-span-2 space-y-10">
-                  <section>
-                    <h4 className="text-white font-bold mb-4 uppercase tracking-wider text-sm font-sans">Overview</h4>
-                    <p className="text-text-secondary leading-relaxed text-lg">{selectedProject.overview}</p>
-                  </section>
-                  <section>
-                    <h4 className="border-l-2 border-red-500/50 pl-4 text-white font-bold mb-4 uppercase tracking-wider text-sm font-sans">The Problem</h4>
-                    <p className="text-text-secondary leading-relaxed">{selectedProject.problem}</p>
-                  </section>
-                  <section>
-                    <h4 className="border-l-2 border-green-500/50 pl-4 text-white font-bold mb-4 uppercase tracking-wider text-sm font-sans">Our Solution</h4>
-                    <p className="text-text-secondary leading-relaxed">{selectedProject.solution}</p>
-                  </section>
-                </div>
-
-                <div className="space-y-6">
-                  <h4 className="text-white font-bold mb-4 uppercase tracking-wider text-sm font-sans">Impact</h4>
-                  {selectedProject.results.map((result, i) => (
-                    <div key={i} className="glass p-6 border-primary/10 hover:border-primary/30 transition-all flex items-center justify-between">
-                      <div>
-                        <p className="text-text-muted text-xs uppercase mb-1 font-sans">{result.label}</p>
-                        <p className="text-2xl font-heading font-bold text-white tracking-tight">{result.value}</p>
-                      </div>
-                      <div className="text-primary opacity-50">
-                        {result.icon}
-                      </div>
-                    </div>
-                  ))}
-                  
-                  <Link to="/free-audit" className="block pt-4">
-                    <Button className="w-full h-14 shadow-glow">Start Your Project</Button>
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
         )}
       </AnimatePresence>
     </div>

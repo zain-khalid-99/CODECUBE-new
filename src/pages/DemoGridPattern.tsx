@@ -17,7 +17,7 @@ export default function DemoGridPattern() {
 
           <div className="grid gap-12 max-w-6xl mx-auto">
             {/* Variant 1: Dotted/Squares */}
-            <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-surface md:shadow-xl">
+            <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-[5px] border border-white/10 bg-surface md:shadow-xl">
               <p className="z-10 whitespace-pre-wrap text-center text-5xl font-black tracking-tighter text-text-primary">
                 Radial Centered Grid
               </p>
@@ -41,7 +41,7 @@ export default function DemoGridPattern() {
             </div>
 
             {/* Variant 2: Linear Gradient */}
-            <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-surface md:shadow-xl">
+            <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-[5px] border border-white/10 bg-surface md:shadow-xl">
               <p className="z-10 whitespace-pre-wrap text-center text-5xl font-black tracking-tighter text-text-primary">
                 Linear Fade Grid
               </p>
@@ -57,7 +57,7 @@ export default function DemoGridPattern() {
             </div>
 
             {/* Variant 3: Dashed */}
-            <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-surface md:shadow-xl">
+            <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-[5px] border border-white/10 bg-surface md:shadow-xl">
               <p className="z-10 whitespace-pre-wrap text-center text-5xl font-black tracking-tighter text-text-primary">
                 Dashed Line Grid
               </p>

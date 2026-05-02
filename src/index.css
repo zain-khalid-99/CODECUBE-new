@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/aeonik');
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Urbanist:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
@@ -51,13 +52,13 @@
   --text-primary: #FFFFFF;
   --text-secondary: #9CA3AF;
   --text-muted: #6B7280;
-  --primary: #7B61FF;
+  --primary: #ff6100;
   --primary-foreground: #FFFFFF;
-  --primary-light: #9B8CFF;
-  --primary-hover: #9B8CFF;
-  --glow-color: rgba(123, 97, 255, 0.1);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --primary-light: #ff8533;
+  --primary-hover: #ff8533;
+  --glow-color: rgba(255, 97, 0, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.05);
 }
 
 @layer base {
@@ -68,13 +69,14 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tight font-black;
+    font-family: 'Aeonik', "Urbanist", sans-serif;
+    @apply tracking-tighter font-black;
   }
 
-  h1 { font-size: 56px; line-height: 1.1; }
-  h2 { font-size: 40px; line-height: 1.2; }
-  h3 { font-size: 28px; line-height: 1.3; }
-  h4 { font-size: 22px; line-height: 1.4; }
+  h1 { font-size: 64px; line-height: 1.05; }
+  h2 { font-size: 48px; line-height: 1.1; }
+  h3 { font-size: 32px; line-height: 1.2; }
+  h4 { font-size: 24px; line-height: 1.3; }
 }
 
 @keyframes scroll {
@@ -83,16 +85,25 @@
 }
 
 .animate-scroll {
-  animation: scroll 30s linear infinite;
+  animation: scroll 40s linear infinite;
+}
+
+.fade-edges {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 @layer utilities {
   .glass {
-    @apply bg-[var(--glass-bg)] border border-[var(--glass-border)] backdrop-blur-xl transition-all duration-300;
+    @apply bg-[var(--glass-bg)] border border-[var(--glass-border)] backdrop-blur-3xl transition-all duration-300;
   }
   
-  .glass-hover {
-    @apply hover:bg-white/[0.06] hover:border-white/[0.12];
+  .glass:hover {
+    @apply border-black;
+  }
+
+  .dark .glass:hover {
+    @apply border-[#ff6000] shadow-[0_0_15px_rgba(255,96,0,0.2)];
   }
 
   .text-gradient {
@@ -102,11 +113,6 @@
   .bg-gradient {
     @apply bg-linear-to-br from-primary to-primary-light;
   }
-
-  .hover-border-dark {
-    @apply transition-colors duration-300;
-  }
-  .hover-border-dark:hover {
-    @apply border-text-primary/40;
-  }
 }
+
+

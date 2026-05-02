@@ -88,6 +88,7 @@ const ShopifyPage = () => {
         { question: "Can I manage the store after launch?", answer: "Yes. Shopify is user-friendly, and we ensure you can manage products and orders easily." },
         { question: "Do you help with conversion optimization?", answer: "Yes, we focus on improving product pages and user flow to increase conversions." }
       ]}
+      pricingCategoryId="shopify"
     />
   );
 };

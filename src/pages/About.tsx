@@ -22,6 +22,7 @@ import { Section } from '@/src/components/ui/Section';
 import { Button } from '@/src/components/ui/button';
 import { GlassCard } from '@/src/components/ui/GlassCard';
 import { SEO } from '@/src/components/ui/SEO';
+import Antigravity from '@/src/components/ui/Antigravity';
 
 export default function About() {
   return (
@@ -35,7 +36,25 @@ export default function About() {
       <main className="flex-grow pt-20">
         {/* HERO SECTION */}
         <Section className="relative pt-24 pb-12 overflow-hidden text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/10 blur-[150px] rounded-full -z-10" />
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-60">
+            <Antigravity
+              count={400}
+              magnetRadius={8}
+              ringRadius={7}
+              waveSpeed={0.4}
+              waveAmplitude={1}
+              particleSize={1.5}
+              lerpSpeed={0.05}
+              autoAnimate
+              particleVariance={1}
+              rotationSpeed={0}
+              depthFactor={1}
+              pulseSpeed={3}
+              particleShape="capsule"
+              fieldStrength={10}
+            />
+          </div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/10 blur-[150px] rounded-[5px] -z-10" />
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,11 +99,11 @@ export default function About() {
               </div>
             </div>
             <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 blur-[150px] -z-10 rounded-full" />
+              <div className="absolute inset-0 bg-primary/20 blur-[150px] -z-10 rounded-[5px]" />
               <img 
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200" 
                 alt="Our Team" 
-                className="rounded-[40px] shadow-2xl border border-white/10"
+                className="rounded-[5px] shadow-2xl border border-white/10"
               />
             </div>
           </div>
@@ -104,16 +123,16 @@ export default function About() {
                    Most businesses struggle because their website, marketing, and operations are disconnected. At Codecubes, we take a different approach.
                  </p>
                  <div className="space-y-6">
-                    <div className="flex gap-4 items-center p-4 rounded-2xl bg-white/5 border border-white/5">
-                      <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary"><Monitor size={20} /></div>
+                    <div className="flex gap-4 items-center p-4 rounded-[5px] bg-white/5 border border-white/5">
+                      <div className="w-10 h-10 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary"><Monitor size={20} /></div>
                       <span className="font-bold">High-performance web development</span>
                     </div>
-                    <div className="flex gap-4 items-center p-4 rounded-2xl bg-white/5 border border-white/5">
-                      <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary"><BarChart3 size={20} /></div>
+                    <div className="flex gap-4 items-center p-4 rounded-[5px] bg-white/5 border border-white/5">
+                      <div className="w-10 h-10 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary"><BarChart3 size={20} /></div>
                       <span className="font-bold">Data-driven SEO and marketing strategies</span>
                     </div>
-                    <div className="flex gap-4 items-center p-4 rounded-2xl bg-white/5 border border-white/5">
-                      <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary"><Workflow size={20} /></div>
+                    <div className="flex gap-4 items-center p-4 rounded-[5px] bg-white/5 border border-white/5">
+                      <div className="w-10 h-10 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary"><Workflow size={20} /></div>
                       <span className="font-bold">Custom n8n automation workflows</span>
                     </div>
                  </div>
@@ -146,8 +165,8 @@ export default function About() {
               { title: "Run ROI-focused ads", desc: "Targeted campaigns that maximize your return on ad spend." },
               { title: "Automate manual effort", desc: "Custom n8n workflows that free up your team to focus on high-impact work." }
             ].map((item, i) => (
-              <div key={i} className="p-10 glass rounded-[40px] flex gap-6 hover:bg-primary/[0.02] transition-colors group">
-                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shrink-0">
+              <div key={i} className="p-10 glass rounded-[5px] flex gap-6 hover:bg-primary/[0.02] transition-colors group">
+                <div className="w-14 h-14 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shrink-0">
                   <CheckCircle2 size={24} />
                 </div>
                 <div>
@@ -166,8 +185,8 @@ export default function About() {
         <Section>
           <div className="grid md:grid-cols-2 gap-12">
             <GlassCard className="p-12 border-primary/10 relative overflow-hidden group">
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all" />
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-8">
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-[5px] blur-3xl group-hover:bg-primary/10 transition-all" />
+              <div className="w-16 h-16 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8">
                 <Target size={32} />
               </div>
               <h2 className="text-4xl font-black mb-6">Our <span className="text-primary">Mission</span></h2>
@@ -185,8 +204,8 @@ export default function About() {
             </GlassCard>
 
             <GlassCard className="p-12 border-primary/10 relative overflow-hidden group">
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all" />
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-8">
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-[5px] blur-3xl group-hover:bg-primary/10 transition-all" />
+              <div className="w-16 h-16 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8">
                 <Eye size={32} />
               </div>
               <h2 className="text-4xl font-black mb-6">Our <span className="text-primary">Vision</span></h2>
@@ -194,7 +213,7 @@ export default function About() {
               <p className="text-lg text-text-secondary font-sans leading-relaxed mb-8">
                 We believe the future of digital growth lies in intelligent systems that combine development, marketing, and automation.
               </p>
-              <div className="p-6 bg-white/5 rounded-2xl border border-white/5 italic font-sans text-text-primary">
+              <div className="p-6 bg-white/5 rounded-[5px] border border-white/5 italic font-sans text-text-primary">
                 "Our vision is to help businesses transition from fragmented efforts to fully connected systems that drive consistent and predictable results."
               </div>
             </GlassCard>
@@ -215,7 +234,7 @@ export default function About() {
               { icon: <Rocket />, title: "Scalable future", desc: "Built for long-term compounding value." }
             ].map((item, i) => (
               <div key={i} className="text-center group">
-                <div className="w-16 h-16 glass rounded-full flex items-center justify-center text-primary mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 glass rounded-[5px] flex items-center justify-center text-primary mx-auto mb-6 group-hover:scale-110 transition-transform">
                   {React.cloneElement(item.icon as React.ReactElement, { size: 28 })}
                 </div>
                 <h4 className="text-xl font-bold mb-3">{item.title}</h4>
@@ -231,7 +250,7 @@ export default function About() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="glass p-16 md:p-24 text-center rounded-[64px] relative overflow-hidden bg-primary/5 border-primary/20 shadow-strong-glow"
+            className="glass p-16 md:p-24 text-center rounded-[5px] relative overflow-hidden bg-primary/5 border-primary/20 shadow-strong-glow"
           >
             <div className="absolute inset-0 bg-primary/5 blur-[80px] -z-10" />
             <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight">Let’s Work <br /> <span className="text-gradient">Together</span></h2>

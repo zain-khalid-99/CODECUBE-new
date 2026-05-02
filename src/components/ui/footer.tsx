@@ -144,7 +144,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-text-secondary hover:text-white hover:bg-white/10 hover:border-primary/50 hover:scale-105 transition-all duration-200 group"
+                className="w-12 h-12 rounded-[5px] border border-white/10 bg-white/5 flex items-center justify-center text-text-secondary hover:text-white hover:bg-white/10 hover:border-primary/50 hover:scale-105 transition-all duration-200 group"
               >
                 <div className="group-hover:drop-shadow-[0_0_8px_rgba(123,97,255,0.8)] transition-all">
                   {social.icon}
