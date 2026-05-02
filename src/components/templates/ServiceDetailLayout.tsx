@@ -6,6 +6,7 @@ import { SEO } from '../ui/SEO';
 import { ChevronRight, HelpCircle, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Link } from 'react-router-dom';
+import { PricingSection } from '../ui/PricingSection';
 
 interface FAQItem {
   question: string;
@@ -56,6 +57,7 @@ interface ServiceDetailLayoutProps {
     items: { title: string; desc: string; details: string[] }[];
   };
   faqs: FAQItem[];
+  pricingCategoryId?: "wordpress" | "shopify" | "marketing" | "seo";
 }
 
 const containerVariants = {
@@ -84,7 +86,8 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
   system,
   insight,
   useCases,
-  faqs
+  faqs,
+  pricingCategoryId
 }) => {
   return (
     <div className="min-h-screen bg-background">
@@ -138,7 +141,7 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
                   ))}
                 </div>
               </motion.div>
-              <div className="glass p-12 rounded-[40px] border-primary/20 bg-primary/5">
+              <div className="glass p-12 rounded-[5px] border-primary/20 bg-primary/5">
                 <p className="text-2xl font-sans text-text-primary italic leading-relaxed">
                   <span className="font-black text-primary block mb-4">Simple Truth:</span>
                   "{problem.truth}"
@@ -162,7 +165,7 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="p-10 glass rounded-[40px] group hover:bg-primary/5 transition-all text-left relative overflow-hidden"
+                  className="p-10 glass rounded-[5px] group hover:bg-primary/5 transition-all text-left relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 p-6 text-6xl font-black text-primary/5">0{i+1}</div>
                   <h3 className="text-2xl font-black mb-6 relative z-10">{step.title}</h3>
@@ -179,7 +182,7 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
             <h2 className="text-4xl font-black mb-20 text-center">{services.title}</h2>
             <div className="grid md:grid-cols-2 gap-10">
               {services.items.map((srv, i) => (
-                <div key={i} className="p-12 glass rounded-[50px] border-white/10">
+                <div key={i} className="p-12 glass rounded-[5px] border-white/10">
                   <h3 className="text-3xl font-black mb-6 text-primary">{srv.title}</h3>
                   <p className="text-xl text-text-secondary mb-8 font-sans">{srv.desc}</p>
                   <ul className="space-y-4">
@@ -203,8 +206,8 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
             <p className="text-xl text-text-secondary mb-16 font-sans">{outcomes.subtitle}</p>
             <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-6">
               {outcomes.items.map((out, i) => (
-                <div key={i} className="flex items-center gap-4 p-8 glass rounded-3xl text-left border-primary/10">
-                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
+                <div key={i} className="flex items-center gap-4 p-8 glass rounded-[5px] text-left border-primary/10">
+                  <div className="w-10 h-10 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary flex-shrink-0">
                     <CheckCircle2 size={20} />
                   </div>
                   <span className="text-lg font-bold">{out}</span>
@@ -224,7 +227,7 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
               <div className="grid sm:grid-cols-3 gap-10 mb-16">
                 {system.points.map((p, i) => (
                   <div key={i} className="flex flex-col items-center gap-4">
-                    <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center border border-white/20">
+                    <div className="w-12 h-12 bg-white/10 rounded-[5px] flex items-center justify-center border border-white/20">
                       <ChevronRight />
                     </div>
                     <span className="font-bold text-lg">{p}</span>
@@ -239,9 +242,9 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
         {/* INSIGHT SECTION */}
         <section className="py-24">
           <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto glass p-16 rounded-[60px] border-primary/20 border-2">
+            <div className="max-w-4xl mx-auto glass p-16 rounded-[5px] border-primary/20 border-2">
               <h2 className="text-3xl font-black mb-10 flex items-center gap-4">
-                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">!</div>
+                <div className="w-10 h-10 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary">!</div>
                 {insight.title}
               </h2>
               <div className="space-y-6 mb-10">
@@ -263,13 +266,13 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
               <h2 className="text-4xl font-black mb-20 text-center">{useCases.title}</h2>
               <div className="grid md:grid-cols-3 gap-8">
                 {useCases.items.map((useCase, i) => (
-                  <div key={i} className="p-10 glass rounded-[40px] border-white/10 hover-border-dark transition-all">
+                  <div key={i} className="p-10 glass rounded-[5px] border-white/10 hover-border-dark transition-all">
                     <h3 className="text-2xl font-black mb-4">{useCase.title}</h3>
                     <p className="text-text-secondary mb-6 font-sans">{useCase.desc}</p>
                     <ul className="space-y-3">
                       {useCase.details.map((detail, j) => (
                         <li key={j} className="flex gap-2 items-start text-sm font-sans">
-                          <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                          <div className="mt-1.5 w-1.5 h-1.5 rounded-[5px] bg-primary flex-shrink-0" />
                           <span className="text-text-primary">{detail}</span>
                         </li>
                       ))}
@@ -281,13 +284,18 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
           </section>
         )}
 
+        {/* PRICING SECTION */}
+        {pricingCategoryId && (
+          <PricingSection categoryId={pricingCategoryId} />
+        )}
+
         {/* FAQS SECTION */}
         <section className="py-24 bg-surface/30">
           <div className="container mx-auto px-6 max-w-4xl">
             <h2 className="text-4xl font-black mb-16 text-center">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
-                <div key={i} className="glass p-8 rounded-3xl border-white/10">
+                <div key={i} className="glass p-8 rounded-[5px] border-white/10">
                   <h3 className="text-xl font-black mb-4 flex gap-3 items-start">
                     <HelpCircle className="text-primary mt-1 flex-shrink-0" size={20} />
                     {faq.question}
@@ -304,7 +312,7 @@ export const ServiceDetailLayout: React.FC<ServiceDetailLayoutProps> = ({
         {/* CONTACT SOFT CONVERSION */}
         <section className="py-24 pb-40">
           <div className="container mx-auto px-6">
-            <div className="max-w-6xl mx-auto rounded-[60px] bg-primary p-20 text-primary-foreground text-center shadow-strong-glow border-4 border-white/10">
+            <div className="max-w-6xl mx-auto rounded-[5px] bg-primary p-20 text-primary-foreground text-center shadow-strong-glow border-4 border-white/10">
               <h2 className="text-5xl font-black mb-8">Ready to Build Your Growth Engine?</h2>
               <p className="text-xl opacity-90 mb-12 max-w-2xl mx-auto font-sans leading-relaxed">
                 If you're unsure where to start, share your current setup and we'll provide clear, actionable insights—not generic advice.

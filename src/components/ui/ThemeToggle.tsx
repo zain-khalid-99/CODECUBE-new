@@ -27,7 +27,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-xl glass hover:bg-primary/10 transition-colors text-text-primary border border-white/10"
+      className="p-2 rounded-[5px] glass hover:bg-primary/10 transition-colors text-text-primary border border-white/10"
       aria-label="Toggle theme"
     >
       <motion.div

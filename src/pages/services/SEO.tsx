@@ -87,6 +87,7 @@ const SEOPage = () => {
         { question: "Is SEO better than paid ads?", answer: "Both serve different purposes. SEO provides long-term traffic, while ads deliver immediate results." },
         { question: "Do I need SEO if I’m already running ads?", answer: "Yes. SEO reduces long-term dependency on paid traffic and builds organic visibility." }
       ]}
+      pricingCategoryId="seo"
     />
   );
 };

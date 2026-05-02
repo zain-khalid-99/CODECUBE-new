@@ -29,6 +29,8 @@ interface AuditFormData {
   websiteUrl: string;
   businessType: string;
   monthlyAdBudget: string;
+  phoneNumber: string;
+  companyName: string;
   goals: string;
 }
 
@@ -36,9 +38,36 @@ export default function FreeAudit() {
   const { register, handleSubmit, formState: { errors } } = useForm<AuditFormData>();
   const [complete, setComplete] = React.useState(false);
 
-  const onSubmit = (data: AuditFormData) => {
-    console.log('Audit Request:', data);
-    setComplete(true);
+  const onSubmit = async (data: AuditFormData) => {
+    try {
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6M9tmlSyatzILGBEdtrYFy1_Mp0ETUyYKnu5i9xwZGn2h2RXqA2cFDS_od0m0EOtM/exec";
+      
+      const payload = {
+        form_type: "Free Audit Page Form",
+        name: data.fullName,
+        email: data.email,
+        phone: data.phoneNumber || 'N/A',
+        company: data.companyName || 'N/A',
+        business_type: data.businessType || 'N/A',
+        website: data.websiteUrl || 'N/A',
+        message: data.goals || 'N/A',
+        page_url: window.location.href
+      };
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      
+      setComplete(true);
+    } catch (err) {
+      alert("Error submitting form");
+      console.error(err);
+    }
   };
 
   const whatYouGet = [
@@ -59,7 +88,7 @@ export default function FreeAudit() {
       <main className="flex-grow pt-20">
         {/* HERO */}
         <Section className="relative pt-24 pb-12 overflow-hidden text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[600px] bg-primary/10 blur-[150px] rounded-full -z-10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[600px] bg-primary/10 blur-[150px] rounded-[5px] -z-10" />
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -86,7 +115,7 @@ export default function FreeAudit() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whatYouGet.map((item, i) => (
               <GlassCard key={i} className="p-10 border-primary/5 hover:border-primary/20 transition-all flex flex-col items-center text-center group">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
                 <h3 className="text-2xl font-black mb-4 h-16 flex items-center">{item.title}</h3>
@@ -108,8 +137,8 @@ export default function FreeAudit() {
                   "Brands running ads but not seeing results",
                   "Teams spending too much time on manual tasks"
                 ].map((text, i) => (
-                   <div key={i} className="flex gap-4 items-center p-5 glass rounded-2xl border-white/5 bg-white/5">
-                      <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                   <div key={i} className="flex gap-4 items-center p-5 glass rounded-[5px] border-white/5 bg-white/5">
+                      <div className="w-8 h-8 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary">
                         <CheckCircle2 size={18} />
                       </div>
                       <span className="text-lg font-bold">{text}</span>
@@ -118,11 +147,11 @@ export default function FreeAudit() {
               </div>
             </div>
             <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 blur-[150px] -z-10 rounded-full" />
+              <div className="absolute inset-0 bg-primary/20 blur-[150px] -z-10 rounded-[5px]" />
               <img 
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" 
                 alt="Growth Audit Analysis" 
-                className="rounded-[40px] shadow-2xl border border-white/10"
+                className="rounded-[5px] shadow-2xl border border-white/10"
               />
             </div>
           </div>
@@ -146,7 +175,7 @@ export default function FreeAudit() {
                       { step: 3, title: "Response", text: "You receive actionable recommendations tailored to your business." }
                     ].map((s) => (
                       <div key={s.step} className="flex gap-6 items-start">
-                        <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 text-primary font-black text-xl">
+                        <div className="w-12 h-12 rounded-[5px] bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 text-primary font-black text-xl">
                           {s.step}
                         </div>
                         <div>
@@ -167,7 +196,7 @@ export default function FreeAudit() {
                         animate={{ opacity: 1, scale: 1 }}
                         className="text-center py-20"
                       >
-                        <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-8 shadow-glow">
+                        <div className="w-24 h-24 bg-primary/10 rounded-[5px] flex items-center justify-center mx-auto mb-8 shadow-glow">
                           <Rocket size={48} className="text-primary animate-bounce" />
                         </div>
                         <h3 className="text-3xl font-black mb-4">Request Received</h3>
@@ -179,42 +208,67 @@ export default function FreeAudit() {
                         <div className="space-y-2">
                           <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Full Name</Label>
                           <Input
+                            id="name"
                             {...register('fullName', { required: 'Name is required' })}
                             placeholder="John Doe"
-                            className="h-14 bg-surface/50 border-white/10 rounded-2xl px-6 focus:ring-2 focus:ring-primary/50"
+                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
                           />
                         </div>
                         <div className="space-y-2">
                           <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Email Address</Label>
                           <Input
+                            id="email"
                             {...register('email', { required: 'Email is required' })}
                             type="email"
                             placeholder="john@company.com"
-                            className="h-14 bg-surface/50 border-white/10 rounded-2xl px-6 focus:ring-2 focus:ring-primary/50"
+                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
                           />
                         </div>
                         <div className="space-y-2">
                           <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Website URL</Label>
                           <Input
+                            id="website"
                             {...register('websiteUrl', { required: 'URL is required' })}
                             placeholder="https://example.com"
-                            className="h-14 bg-surface/50 border-white/10 rounded-2xl px-6 focus:ring-2 focus:ring-primary/50"
+                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
                           />
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Phone Number</Label>
+                            <Input
+                              id="phone"
+                              {...register('phoneNumber')}
+                              type="tel"
+                              placeholder="+1 234 567 890"
+                              className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Company Name</Label>
+                            <Input
+                              id="company"
+                              {...register('companyName')}
+                              placeholder="Acme Corp"
+                              className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                            />
+                          </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Business Type</Label>
                             <Input
+                              id="business_type"
                               {...register('businessType')}
                               placeholder="e.g. SaaS"
-                              className="h-14 bg-surface/50 border-white/10 rounded-2xl px-6 focus:ring-2 focus:ring-primary/50"
+                              className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
                             />
                           </div>
                           <div className="space-y-2">
                             <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Monthly Marketing Budget</Label>
                             <select
                               {...register('monthlyAdBudget')}
-                              className="w-full h-14 bg-surface/50 border border-white/10 rounded-2xl px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
+                              className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
                             >
                               <option value="&lt;$1k">&lt;$1,000</option>
                               <option value="$1k-$5k">$1,000 - $5,000</option>
@@ -226,9 +280,10 @@ export default function FreeAudit() {
                         <div className="space-y-2">
                           <Label className="text-[10px] uppercase font-black text-text-muted tracking-widest px-2 shadow-none">Your Goals (Short Description)</Label>
                           <textarea
+                            id="message"
                             {...register('goals')}
                             placeholder="We want to double our conversions by end of Q3..."
-                            className="w-full h-32 bg-surface/50 border border-white/10 rounded-2xl p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none"
+                            className="w-full h-32 bg-surface/50 border border-white/10 rounded-[5px] p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none"
                           />
                         </div>
                         <Button type="submit" size="lg" className="w-full h-18 text-xl font-black shadow-glow group">
@@ -255,7 +310,7 @@ export default function FreeAudit() {
               { title: "Integrated approach", desc: "Evolution of development, marketing, and automation." },
               { title: "Scalable solutions", desc: "Tailored to your business needs and future growth." }
             ].map((item, i) => (
-              <div key={i} className="p-8 glass rounded-[40px] text-center hover:bg-primary/[0.02] transition-colors border-white/5">
+              <div key={i} className="p-8 glass rounded-[5px] text-center hover:bg-primary/[0.02] transition-colors border-white/5">
                 <CheckCircle2 size={32} className="text-primary mx-auto mb-6" />
                 <h4 className="text-xl font-bold mb-3">{item.title}</h4>
                 <p className="text-text-secondary text-sm font-sans">{item.desc}</p>
@@ -270,7 +325,7 @@ export default function FreeAudit() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="glass p-16 md:p-24 text-center rounded-[64px] relative overflow-hidden bg-primary/5 border-primary/20 shadow-strong-glow"
+            className="glass p-16 md:p-24 text-center rounded-[5px] relative overflow-hidden bg-primary/5 border-primary/20 shadow-strong-glow"
           >
             <div className="absolute inset-0 bg-primary/5 blur-[80px] -z-10" />
             <h2 className="text-4xl md:text-7xl font-black mb-8">Take the First Step Toward <br /> <span className="text-gradient">Smarter Growth</span></h2>

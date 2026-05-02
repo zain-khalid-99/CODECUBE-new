@@ -88,6 +88,7 @@ const MarketingPage = () => {
         { question: "Do you guarantee results?", answer: "No agency can guarantee results. We focus on improving performance through structured strategy and continuous optimization." },
         { question: "Which platform is better—Meta Ads or Google Ads?", answer: "It depends on your business. Meta Ads are strong for awareness and targeting, while Google Ads capture high-intent users." }
       ]}
+      pricingCategoryId="marketing"
     />
   );
 };

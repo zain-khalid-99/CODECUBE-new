@@ -75,14 +75,14 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="glass rounded-2xl overflow-hidden border border-white/5"
+                className="glass rounded-[5px] overflow-hidden border border-white/5"
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   className="w-full p-6 text-left flex items-center justify-between hover:bg-primary/5 transition-colors"
                 >
                   <span className="text-lg md:text-xl font-bold">{faq.question}</span>
-                  <div className="bg-primary/10 p-2 rounded-lg text-primary">
+                  <div className="bg-primary/10 p-2 rounded-[5px] text-primary">
                     {openIndex === index ? <Minus size={20} /> : <Plus size={20} />}
                   </div>
                 </button>
@@ -103,7 +103,7 @@ export default function FAQ() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="mt-20 p-12 glass rounded-3xl text-center border-primary/20 bg-primary/5"
+            className="mt-20 p-12 glass rounded-[5px] text-center border-primary/20 bg-primary/5"
           >
             <h3 className="text-2xl md:text-3xl mb-4">Still have questions?</h3>
             <p className="text-text-secondary mb-8">
@@ -111,7 +111,7 @@ export default function FAQ() {
             </p>
             <a 
               href="/contact" 
-              className="inline-flex h-14 items-center justify-center px-10 bg-primary text-white rounded-full font-bold shadow-strong-glow hover:scale-105 transition-transform"
+              className="inline-flex h-14 items-center justify-center px-10 bg-primary text-white rounded-[5px] font-bold shadow-strong-glow hover:scale-105 transition-transform"
             >
               Contact Strategy Team
             </a>

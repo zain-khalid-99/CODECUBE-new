@@ -112,7 +112,7 @@ export default function Services() {
       <main className="flex-grow pt-20">
         {/* HERO SECTION */}
         <Section className="relative pt-24 pb-12 overflow-hidden text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/10 blur-[150px] rounded-full -z-10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/10 blur-[150px] rounded-[5px] -z-10" />
           <motion.div 
             initial="hidden"
             animate="visible"
@@ -147,7 +147,7 @@ export default function Services() {
               >
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
                   <div>
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-8 shadow-glow">
+                    <div className="w-16 h-16 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8 shadow-glow">
                       {service.icon}
                     </div>
                     <h3 className="text-3xl md:text-4xl font-black mb-2">{service.title}</h3>
@@ -162,9 +162,9 @@ export default function Services() {
                         <Link 
                           key={item.name} 
                           to={item.href || '#'}
-                          className="flex gap-4 group/item hover:bg-primary/5 p-4 rounded-2xl transition-all"
+                          className="flex gap-4 group/item hover:bg-primary/5 p-4 rounded-[5px] transition-all"
                         >
-                          <div className="mt-1.5 shrink-0 w-2 h-2 rounded-full bg-primary" />
+                          <div className="mt-1.5 shrink-0 w-2 h-2 rounded-[5px] bg-primary" />
                           <div>
                             <div className="font-bold text-text-primary text-lg group-hover/item:text-primary transition-colors">{item.name}</div>
                             <div className="text-text-secondary text-sm font-sans">{item.desc}</div>
@@ -174,7 +174,7 @@ export default function Services() {
                       ))}
                     </div>
 
-                    <div className="p-8 glass border-primary/20 bg-primary/5 rounded-3xl">
+                    <div className="p-8 glass border-primary/20 bg-primary/5 rounded-[5px]">
                       <h5 className="text-sm font-black uppercase tracking-widest text-primary mb-4">Outcome</h5>
                       <p className="text-lg font-sans text-text-primary font-bold italic leading-relaxed">
                         {service.outcome}
@@ -187,8 +187,8 @@ export default function Services() {
                       <h4 className="text-xl font-bold mb-8">Key Benefits:</h4>
                       <div className="space-y-4">
                         {service.benefits.map(benefit => (
-                          <div key={benefit} className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 group hover-border-dark transition-all">
-                            <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                          <div key={benefit} className="flex items-center gap-4 p-4 rounded-[5px] bg-white/5 border border-white/5 group hover-border-dark transition-all">
+                            <div className="w-8 h-8 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                               <CheckCircle2 size={16} />
                             </div>
                             <span className="font-bold text-text-primary">{benefit}</span>
@@ -222,9 +222,9 @@ export default function Services() {
               { step: "3.", title: "Execution", desc: "We implement solutions with a focus on quality, performance, and scalability.", icon: <Cpu /> },
               { step: "4.", title: "Optimization & Scale", desc: "We continuously refine and improve systems to maximize results over time.", icon: <Zap /> }
             ].map((p, i) => (
-              <div key={i} className="relative p-10 glass rounded-[40px] group transition-all hover:bg-primary/[0.02] hover-border-dark">
+              <div key={i} className="relative p-10 glass rounded-[5px] group transition-all hover:bg-primary/[0.02] hover-border-dark">
                 <div className="text-4xl font-black text-primary/10 mb-6">{p.step}</div>
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-6">
                   {p.icon}
                 </div>
                 <h3 className="text-xl font-black mb-4 h-12 flex items-center">{p.title}</h3>
@@ -249,7 +249,7 @@ export default function Services() {
               { title: 'Scalable solutions', desc: 'Systems that grow as your business reaches new milestones.' }
             ].map((item, i) => (
               <GlassCard key={item.title} className="p-8 flex gap-6 items-start translate-y-0 hover:-translate-y-2 transition-all">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                <div className="w-12 h-12 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary shrink-0">
                   <CheckCircle2 size={24} />
                 </div>
                 <div>
@@ -267,7 +267,7 @@ export default function Services() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="glass p-16 md:p-24 text-center rounded-[64px] relative overflow-hidden bg-primary/5 border-primary/20"
+            className="glass p-16 md:p-24 text-center rounded-[5px] relative overflow-hidden bg-primary/5 border-primary/20"
           >
             <div className="absolute inset-0 bg-primary/5 blur-[80px] -z-10" />
             <h2 className="text-4xl md:text-7xl font-black mb-8">Let’s Build a System That <br /> <span className="text-gradient">Works for Your Business</span></h2>
