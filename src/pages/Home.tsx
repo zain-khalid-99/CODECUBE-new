@@ -366,8 +366,8 @@ export default function Home() {
             <motion.div style={{ y: yParallax }} className="order-2 lg:order-1 relative">
               <div className="absolute inset-0 bg-primary/20 blur-[150px] -z-10 rounded-[5px]" />
               <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200"
-                alt="n8n Automation"
+                src="/images/n8n.png"
+                alt="n8n Automation Workflow"
                 className="rounded-[5px] shadow-2xl border border-white/10"
               />
               <GlassCard className="absolute -bottom-10 -right-10 p-8 hidden md:block max-w-[300px]">
