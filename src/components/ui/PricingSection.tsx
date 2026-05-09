@@ -366,19 +366,19 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ categoryId }) =>
                     </div>
                   )}
                   
-                  <div className="mb-8">
+                  <div className="mb-8 flex-grow flex flex-col">
                     <h3 className="text-xl font-black uppercase tracking-widest text-text-primary mb-4">{plan.name}</h3>
                     <div className="flex items-baseline gap-2 text-text-primary">
                       <span className="text-lg font-bold">$</span>
                       <span className="text-5xl font-black tracking-tighter">{plan.price}</span>
                       <span className="text-text-muted font-sans font-bold">/{plan.period}</span>
                     </div>
-                    <p className="text-text-secondary font-sans mt-6 text-sm leading-relaxed h-16 mb-[15px]">
+                    <p className="text-text-secondary font-sans mt-6 text-sm leading-relaxed">
                       {plan.description}
                     </p>
                   </div>
 
-                  <Link to="/contact" className="w-full mt-0 mb-12 block">
+                  <Link to="/contact" className="w-full mt-[20px] mb-12 block">
                     <Button 
                       variant={plan.popular ? 'default' : 'outline'} 
                       className="w-full h-14 font-black tracking-wide group-hover:shadow-glow transition-all"
