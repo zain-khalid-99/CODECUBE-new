@@ -164,7 +164,7 @@ export const Navbar = () => {
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="lg:hidden absolute top-[110%] left-0 right-0 glass p-6 flex flex-col gap-2 rounded-[5px] border border-primary shadow-2xl origin-top overflow-y-auto max-h-[85vh] bg-background/95 backdrop-blur-3xl z-[150] pointer-events-auto"
+              className="lg:hidden absolute top-[110%] left-0 right-0 bg-background p-6 flex flex-col gap-2 rounded-[5px] border border-primary shadow-2xl origin-top overflow-y-auto max-h-[85vh] z-[150] pointer-events-auto"
             >
               <Link
                 to="/"

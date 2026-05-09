@@ -26,7 +26,6 @@ const footerLinks = {
     { name: 'Automation (n8n)', href: '/automations' },
   ],
   resources: [
-    { name: 'Blog', href: '/blog' },
     { name: 'Case Studies', href: '/our-work' },
     { name: 'Free Audit', href: '/free-audit' },
   ],
@@ -37,10 +36,10 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: <Mail size={18} />, href: 'mailto:hello@codecubes.com', label: 'Email' },
+  { icon: <Mail size={18} />, href: 'mailto:codecubesdigital@gmail.com', label: 'Email' },
   { icon: <Twitter size={18} />, href: 'https://twitter.com/codecubes', label: 'Twitter' },
   { icon: <Instagram size={18} />, href: 'https://instagram.com/codecubes', label: 'Instagram' },
-  { icon: <MessageCircle size={18} />, href: 'https://wa.me/923000000000', label: 'WhatsApp' },
+  { icon: <MessageCircle size={18} />, href: 'https://wa.me/923194931082', label: 'WhatsApp' },
   { icon: <Facebook size={18} />, href: 'https://facebook.com/codecubes', label: 'Facebook' },
   { icon: <Linkedin size={18} />, href: 'https://linkedin.com/company/codecubes', label: 'LinkedIn' },
   { icon: <Youtube size={18} />, href: 'https://youtube.com/@codecubes', label: 'YouTube' },
