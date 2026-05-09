@@ -196,7 +196,7 @@ export default function Contact() {
                         <Input
                           id="name"
                           {...register('fullName', { required: 'Name is required' })}
-                          placeholder="John Doe"
+                          placeholder="Code Cubes"
                           className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>
@@ -206,7 +206,7 @@ export default function Contact() {
                           id="email"
                           {...register('email', { required: 'Email is required' })}
                           type="email"
-                          placeholder="john@company.com"
+                          placeholder="codecubesdigital@gmail.com"
                           className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>

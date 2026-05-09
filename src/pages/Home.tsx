@@ -529,11 +529,11 @@ export default function Home() {
                 <form className="space-y-6" onSubmit={handleFormSubmit}>
                   <div className="space-y-2 text-text-primary">
                     <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Full Name</Label>
-                    <Input id="name" type="text" name="fullName" placeholder="John Doe" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
+                    <Input id="name" type="text" name="fullName" placeholder="Code Cubes" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
                   </div>
                   <div className="space-y-2 text-text-primary">
                     <Label className="text-[10px] uppercase font-black text-text-muted tracking-[0.2em] px-2 shadow-none">Email Address</Label>
-                    <Input id="email" type="email" name="email" placeholder="john@company.com" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
+                    <Input id="email" type="email" name="email" placeholder="codecubesdigital@gmail.com" className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50" required />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2 text-text-primary">
