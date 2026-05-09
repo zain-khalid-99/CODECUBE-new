@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { WhatsAppWidget } from './components/ui/WhatsAppWidget';
+import { ScrollToTopButton } from './components/ui/ScrollToTopButton';
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
@@ -14,6 +15,8 @@ const Automations = lazy(() => import('./pages/Automations'));
 const Contact = lazy(() => import('./pages/Contact'));
 const FreeAudit = lazy(() => import('./pages/FreeAudit'));
 const FAQ = lazy(() => import('./pages/FAQ'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsConditions = lazy(() => import('./pages/TermsConditions'));
 
 // Service pages
 const SEOPage = lazy(() => import('./pages/services/SEO'));
@@ -55,6 +58,8 @@ function AnimatedRoutes() {
         <Route path="/contact" element={<Suspense fallback={<PageLoader />}><PageWrapper><Contact /></PageWrapper></Suspense>} />
         <Route path="/free-audit" element={<Suspense fallback={<PageLoader />}><PageWrapper><FreeAudit /></PageWrapper></Suspense>} />
         <Route path="/faq" element={<Suspense fallback={<PageLoader />}><PageWrapper><FAQ /></PageWrapper></Suspense>} />
+        <Route path="/privacy" element={<Suspense fallback={<PageLoader />}><PageWrapper><PrivacyPolicy /></PageWrapper></Suspense>} />
+        <Route path="/terms" element={<Suspense fallback={<PageLoader />}><PageWrapper><TermsConditions /></PageWrapper></Suspense>} />
 
         {/* Service routes */}
         <Route path="/services/seo" element={<Suspense fallback={<PageLoader />}><PageWrapper><SEOPage /></PageWrapper></Suspense>} />
@@ -98,6 +103,7 @@ export default function App() {
     <HelmetProvider>
       <BrowserRouter>
         <WhatsAppWidget />
+        <ScrollToTopButton />
         <AnimatedRoutes />
       </BrowserRouter>
     </HelmetProvider>

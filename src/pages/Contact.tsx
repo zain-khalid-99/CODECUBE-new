@@ -196,7 +196,7 @@ export default function Contact() {
                         <Input
                           id="name"
                           {...register('fullName', { required: 'Name is required' })}
-                          placeholder="John Doe"
+                          placeholder="Code Cubes"
                           className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>
@@ -206,7 +206,7 @@ export default function Contact() {
                           id="email"
                           {...register('email', { required: 'Email is required' })}
                           type="email"
-                          placeholder="john@company.com"
+                          placeholder="codecubesdigital@gmail.com"
                           className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>
@@ -249,10 +249,10 @@ export default function Contact() {
                             className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
                           >
                             <option value="">Select Budget</option>
-                            <option value="<50k">&lt; Rs 50,000</option>
-                            <option value="50k-100k">Rs 50,000 - Rs 100,000</option>
-                            <option value="100k-200k">Rs 100,000 - Rs 200,000</option>
-                            <option value="200k+">Rs 200,000+</option>
+                            <option value="<500">&lt; $500</option>
+                            <option value="500-1500">$500 - $1,500</option>
+                            <option value="1500-3000">$1,500 - $3,000</option>
+                            <option value="3000+">$3,000+</option>
                           </select>
                         </div>
                         <div className="space-y-2">
