@@ -12,11 +12,11 @@ export const ScrollToTopButton = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+      initial={{ opacity: 1, scale: 1, y: 0 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       // Mobile first: bottom-24 right-6 to sit above WhatsApp widget (which is at bottom-6)
-      className="fixed bottom-[100px] right-6 md:bottom-[110px] md:right-8 z-[90] pointer-events-auto"
+      className="fixed bottom-[100px] right-6 md:bottom-[110px] md:right-8 z-[9999] pointer-events-auto"
     >
       <Button
         size="icon"
