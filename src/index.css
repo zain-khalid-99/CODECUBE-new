@@ -11,6 +11,7 @@
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-primary: var(--primary);
+  --color-accent: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-light: var(--primary-light);
   --color-primary-hover: var(--primary-hover);
@@ -24,11 +25,11 @@
   --font-heading: "Urbanist", sans-serif;
 
   /* Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 32px;
-  --radius-pill: 9999px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-pill: 0px;
 
   /* Effects */
   --shadow-glow: 0 0 30px var(--glow-color);
@@ -41,11 +42,11 @@
   --text-primary: #000000;
   --text-secondary: #444444;
   --text-muted: #888888;
-  --primary: #000000;
+  --primary: #F16232;
   --primary-foreground: #ffffff;
-  --primary-light: #444444;
-  --primary-hover: #333333;
-  --glow-color: rgba(0, 0, 0, 0.05);
+  --primary-light: #ff7d52;
+  --primary-hover: #e05323;
+  --glow-color: rgba(241, 98, 50, 0.05);
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(0, 0, 0, 0.08);
 }
@@ -56,11 +57,11 @@
   --text-primary: #FFFFFF;
   --text-secondary: #9CA3AF;
   --text-muted: #6B7280;
-  --primary: #ff6100;
+  --primary: #F16232;
   --primary-foreground: #FFFFFF;
-  --primary-light: #ff8533;
-  --primary-hover: #ff8533;
-  --glow-color: rgba(255, 97, 0, 0.15);
+  --primary-light: #ff7d52;
+  --primary-hover: #e05323;
+  --glow-color: rgba(241, 98, 50, 0.15);
   --glass-bg: rgba(255, 255, 255, 0.02);
   --glass-border: rgba(255, 255, 255, 0.05);
 }
@@ -102,11 +103,7 @@
     @apply bg-[var(--glass-bg)] border border-[var(--glass-border)] backdrop-blur-3xl transition-all duration-300;
     
     &:hover {
-      @apply border-black;
-    }
-
-    .dark &:hover {
-      @apply border-[#ff6000] shadow-[0px_0px_15px_rgb(255_96_0_/_0.2)];
+      @apply border-[#F16232] shadow-[0px_0px_15px_rgba(241,98,50,0.2)];
     }
   }
 

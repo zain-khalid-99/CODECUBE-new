@@ -57,10 +57,10 @@ export const Navbar = () => {
           backgroundColor, 
           backdropFilter: 'blur(16px)', 
         }}
-        className="max-w-7xl w-full flex items-center justify-between px-6 h-18 rounded-[5px] border border-primary shadow-2xl pointer-events-auto relative transition-all"
+        className="max-w-7xl w-full flex items-center justify-between px-6 h-18 rounded-none border border-primary shadow-2xl pointer-events-auto relative transition-all"
       >
         <Link to="/" className="flex items-center gap-2 group cursor-pointer z-[101]">
-          <div className="w-8 h-8 bg-primary rounded-[5px] flex items-center justify-center shadow-glow group-hover:shadow-strong-glow transition-all duration-300">
+          <div className="w-8 h-8 bg-primary rounded-none flex items-center justify-center shadow-glow group-hover:shadow-strong-glow transition-all duration-300">
             <Box size={20} className="text-white" />
           </div>
           <span className="font-heading text-xl md:text-2xl font-black tracking-tight text-text-primary">Codecubes</span>
@@ -90,7 +90,7 @@ export const Navbar = () => {
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[700px] z-[110]"
                 >
-                  <div className="rounded-[5px] p-10 shadow-2xl border border-primary shadow-primary/5 bg-background">
+                  <div className="rounded-none p-10 shadow-2xl border border-primary shadow-primary/5 bg-background">
                     <div className="grid grid-cols-3 gap-10">
                       {products.map((cat) => (
                         <div key={cat.category}>
@@ -100,7 +100,7 @@ export const Navbar = () => {
                                 <Link 
                                   key={item.name} 
                                   to={item.href}
-                                  className="group flex gap-4 p-3 rounded-[5px] hover:bg-surface/50 transition-all items-start"
+                                  className="group flex gap-4 p-3 rounded-none hover:bg-surface/50 transition-all items-start"
                                 >
                                   <div className="mt-1 text-primary opacity-70 group-hover:opacity-100 transition-opacity">
                                     {item.icon}
@@ -164,11 +164,11 @@ export const Navbar = () => {
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="lg:hidden absolute top-[110%] left-0 right-0 bg-background p-6 flex flex-col gap-2 rounded-[5px] border border-primary shadow-2xl origin-top overflow-y-auto max-h-[85vh] z-[150] pointer-events-auto"
+              className="lg:hidden absolute top-[110%] left-0 right-0 bg-background p-6 flex flex-col gap-2 rounded-none border border-primary shadow-2xl origin-top overflow-y-auto max-h-[85vh] z-[150] pointer-events-auto"
             >
               <Link
                 to="/"
-                className="p-4 rounded-[5px] hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
+                className="p-4 rounded-none hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
                 onClick={() => setIsOpen(false)}
               >
                 Home
@@ -185,7 +185,7 @@ export const Navbar = () => {
                       <Link
                         key={item.name}
                         to={item.href}
-                        className="flex flex-col p-4 rounded-[5px] hover:bg-primary/10 transition-colors"
+                        className="flex flex-col p-4 rounded-none hover:bg-primary/10 transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
                         <span className="font-bold text-base text-text-primary">{item.name}</span>
@@ -200,7 +200,7 @@ export const Navbar = () => {
               
               <Link
                 to="/automations"
-                className="p-4 rounded-[5px] hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
+                className="p-4 rounded-none hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
                 onClick={() => setIsOpen(false)}
               >
                 Automations
@@ -208,7 +208,7 @@ export const Navbar = () => {
 
               <Link
                 to="/work"
-                className="p-4 rounded-[5px] hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
+                className="p-4 rounded-none hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
                 onClick={() => setIsOpen(false)}
               >
                 Case Study
@@ -216,7 +216,7 @@ export const Navbar = () => {
               
               <Link
                 to="/faq"
-                className="p-4 rounded-[5px] hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
+                className="p-4 rounded-none hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
                 onClick={() => setIsOpen(false)}
               >
                 About / FAQ
@@ -224,7 +224,7 @@ export const Navbar = () => {
 
               <Link
                 to="/contact"
-                className="p-4 rounded-[5px] hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
+                className="p-4 rounded-none hover:bg-primary/10 transition-colors text-text-primary font-bold text-lg"
                 onClick={() => setIsOpen(false)}
               >
                 Contact

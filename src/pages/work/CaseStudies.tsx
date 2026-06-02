@@ -109,14 +109,14 @@ export default function CaseStudies() {
       <main className="flex-grow pt-20">
         {/* HERO */}
         <Section className="relative pt-24 pb-16 overflow-visible">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 blur-[120px] rounded-[5px] -z-10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 blur-[120px] rounded-none -z-10" />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <span className="inline-block text-primary text-sm font-bold tracking-widest uppercase mb-6 font-sans bg-primary/10 px-4 py-2 rounded-[5px]">
+            <span className="inline-block text-primary text-sm font-bold tracking-widest uppercase mb-6 font-sans bg-primary/10 px-4 py-2 rounded-none">
               Our Work
             </span>
             <h1 className="mb-6">
@@ -155,7 +155,7 @@ export default function CaseStudies() {
                       <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
                       <div className="absolute bottom-4 left-4 flex gap-2 flex-wrap">
                         {cs.metrics.map((m, i) => (
-                          <span key={i} className="glass px-3 py-1.5 rounded-[5px] text-xs font-sans">
+                          <span key={i} className="glass px-3 py-1.5 rounded-none text-xs font-sans">
                             <span className="text-primary font-black">{m.value}</span>{' '}
                             <span className="text-text-muted">{m.label}</span>
                           </span>
@@ -176,7 +176,7 @@ export default function CaseStudies() {
                       </p>
                       <div className="flex flex-wrap gap-2 mb-10">
                         {cs.tags.map((tag) => (
-                          <span key={tag} className="px-3 py-1 rounded-[5px] text-xs font-bold bg-primary/10 text-primary font-sans border border-primary/20">
+                          <span key={tag} className="px-3 py-1 rounded-none text-xs font-bold bg-primary/10 text-primary font-sans border border-primary/20">
                             {tag}
                           </span>
                         ))}
@@ -208,7 +208,7 @@ export default function CaseStudies() {
         {/* CTA */}
         <Section className="pb-40">
           <GlassCard className="p-20 text-center relative overflow-hidden bg-primary/5 border-primary/20 max-w-5xl mx-auto">
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-[5px] -z-10" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-none -z-10" />
             <ShoppingCart className="mx-auto mb-6 text-primary opacity-60" size={40} />
             <h2 className="mb-6">Want Results Like These?</h2>
             <p className="text-text-secondary text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-sans">

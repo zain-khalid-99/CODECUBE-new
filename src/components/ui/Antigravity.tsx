@@ -206,14 +206,12 @@ const AntigravityInner = ({
 };
 
 const Antigravity = (props: AntigravityInnerProps) => {
-  const [themeColor, setThemeColor] = useState('#ff6000'); // Default to orange for better immediate visibility
+  const [themeColor, setThemeColor] = useState('#F16232'); // Default to primary for better immediate visibility
 
   useEffect(() => {
     const getThemeColor = () => {
-      const isDark = document.documentElement.classList.contains('dark') || 
-                    document.body.classList.contains('dark') ||
-                    window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return isDark ? '#ff6000' : '#000000';
+      // Return `#F16232` for both modes to render premium brand-colored particles
+      return '#F16232';
     };
 
     setThemeColor(getThemeColor());
@@ -234,10 +232,6 @@ const Antigravity = (props: AntigravityInnerProps) => {
       mediaQuery.removeEventListener('change', handler);
     };
   }, []);
-
-  const isDark = themeColor === '#ff6000';
-
-  if (!isDark) return null;
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>

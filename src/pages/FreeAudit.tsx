@@ -108,7 +108,7 @@ export default function FreeAudit() {
               fieldStrength={10}
             />
           </div>
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[600px] bg-primary/10 blur-[150px] rounded-[5px] -z-10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-[600px] bg-primary/10 blur-[150px] rounded-none -z-10" />
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -135,7 +135,7 @@ export default function FreeAudit() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whatYouGet.map((item, i) => (
               <GlassCard key={i} className="p-10 border-primary/5 transition-all flex flex-col items-center text-center group">
-                <div className="w-16 h-16 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-primary/10 rounded-none flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
                 <h3 className="text-2xl font-black mb-4 h-16 flex items-center">{item.title}</h3>
@@ -157,8 +157,8 @@ export default function FreeAudit() {
                   "Brands running ads but not seeing results",
                   "Teams spending too much time on manual tasks"
                 ].map((text, i) => (
-                  <div key={i} className="flex gap-4 items-center p-5 glass rounded-[5px] border-white/5 bg-white/5">
-                    <div className="w-8 h-8 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary">
+                  <div key={i} className="flex gap-4 items-center p-5 glass rounded-none border-white/5 bg-white/5">
+                    <div className="w-8 h-8 bg-primary/10 rounded-none flex items-center justify-center text-primary">
                       <CheckCircle2 size={18} />
                     </div>
                     <span className="text-lg font-bold">{text}</span>
@@ -167,11 +167,11 @@ export default function FreeAudit() {
               </div>
             </div>
             <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 blur-[150px] -z-10 rounded-[5px]" />
+              <div className="absolute inset-0 bg-primary/20 blur-[150px] -z-10 rounded-none" />
               <img
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200"
                 alt="Growth Audit Analysis"
-                className="rounded-[5px] shadow-2xl border border-white/10"
+                className="rounded-none shadow-2xl border border-white/10"
               />
             </div>
           </div>
@@ -195,7 +195,7 @@ export default function FreeAudit() {
                     { step: 3, title: "Response", text: "You receive actionable recommendations tailored to your business." }
                   ].map((s) => (
                     <div key={s.step} className="flex gap-6 items-start">
-                      <div className="w-12 h-12 rounded-[5px] bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 text-primary font-black text-xl">
+                      <div className="w-12 h-12 rounded-none bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 text-primary font-black text-xl">
                         {s.step}
                       </div>
                       <div>
@@ -216,7 +216,7 @@ export default function FreeAudit() {
                       animate={{ opacity: 1, scale: 1 }}
                       className="text-center py-20"
                     >
-                      <div className="w-24 h-24 bg-primary/10 rounded-[5px] flex items-center justify-center mx-auto mb-8 shadow-glow">
+                      <div className="w-24 h-24 bg-primary/10 rounded-none flex items-center justify-center mx-auto mb-8 shadow-glow">
                         <Rocket size={48} className="text-primary animate-bounce" />
                       </div>
                       <h3 className="text-3xl font-black mb-4">Request Received</h3>
@@ -231,7 +231,7 @@ export default function FreeAudit() {
                           id="name"
                           {...register('fullName', { required: 'Name is required' })}
                           placeholder="Code Cubes"
-                          className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                          className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>
                       <div className="space-y-2">
@@ -241,7 +241,7 @@ export default function FreeAudit() {
                           {...register('email', { required: 'Email is required' })}
                           type="email"
                           placeholder="codecubesdigital@gmail.com"
-                          className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                          className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>
                       <div className="grid md:grid-cols-2 gap-6">
@@ -252,7 +252,7 @@ export default function FreeAudit() {
                             {...register('phoneNumber', { required: 'Phone is required' })}
                             type="tel"
                             placeholder="+1 234 567 890"
-                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                            className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                           />
                         </div>
                         <div className="space-y-2">
@@ -261,7 +261,7 @@ export default function FreeAudit() {
                             id="company"
                             {...register('companyName')}
                             placeholder="Acme Corp"
-                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                            className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                           />
                         </div>
                       </div>
@@ -271,7 +271,7 @@ export default function FreeAudit() {
                           id="website"
                           {...register('websiteUrl')}
                           placeholder="https://..."
-                          className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                          className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>
                       <div className="grid md:grid-cols-2 gap-6">
@@ -280,7 +280,7 @@ export default function FreeAudit() {
                           <select
                             id="budget"
                             {...register('budget', { required: 'Budget is required' })}
-                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
+                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
                           >
                             <option value="">Select Budget</option>
                             <option value="<500">&lt; $500</option>
@@ -294,7 +294,7 @@ export default function FreeAudit() {
                           <select
                             id="services"
                             {...register('services', { required: 'Service is required' })}
-                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
+                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
                           >
                             <option value="">Select Service</option>
                             <option value="wordpress">Wordpress Web Development</option>
@@ -313,7 +313,7 @@ export default function FreeAudit() {
                           id="message"
                           {...register('message', { required: 'Message is required' })}
                           placeholder="Tell us about your project..."
-                          className="w-full h-32 bg-surface/50 border border-white/10 rounded-[5px] p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none"
+                          className="w-full h-32 bg-surface/50 border border-white/10 rounded-none p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none"
                         ></textarea>
                       </div>
                       <Button type="submit" size="lg" className="w-full h-18 text-xl font-black shadow-glow group">
@@ -340,7 +340,7 @@ export default function FreeAudit() {
               { title: "Integrated approach", desc: "Evolution of development, marketing, and automation." },
               { title: "Scalable solutions", desc: "Tailored to your business needs and future growth." }
             ].map((item, i) => (
-              <div key={i} className="p-8 glass rounded-[5px] text-center hover:bg-primary/[0.02] transition-colors border-white/5">
+              <div key={i} className="p-8 glass rounded-none text-center hover:bg-primary/[0.02] transition-colors border-white/5">
                 <CheckCircle2 size={32} className="text-primary mx-auto mb-6" />
                 <h4 className="text-xl font-bold mb-3">{item.title}</h4>
                 <p className="text-text-secondary text-sm font-sans">{item.desc}</p>
@@ -355,7 +355,7 @@ export default function FreeAudit() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="glass p-16 md:p-24 text-center rounded-[5px] relative overflow-hidden bg-primary/5 border-primary/20 shadow-strong-glow"
+            className="glass p-16 md:p-24 text-center rounded-none relative overflow-hidden bg-primary/5 border-primary/20 shadow-strong-glow"
           >
             <div className="absolute inset-0 bg-primary/5 blur-[80px] -z-10" />
             <h2 className="text-4xl md:text-7xl font-black mb-8">Take the First Step Toward <br /> <span className="text-gradient">Smarter Growth</span></h2>

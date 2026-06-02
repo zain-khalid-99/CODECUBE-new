@@ -28,7 +28,7 @@ export const WhatsAppWidget = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="mb-4 w-[320px] max-w-[calc(100vw-2rem)] glass border-primary/20 bg-background/95 backdrop-blur-3xl rounded-[5px] shadow-strong-glow overflow-hidden"
+            className="mb-4 w-[320px] max-w-[calc(100vw-2rem)] glass border-primary/20 bg-background/95 backdrop-blur-3xl rounded-none shadow-strong-glow overflow-hidden"
           >
             <div className="bg-primary p-4 flex justify-between items-center text-primary-foreground">
               <div className="font-bold flex items-center gap-2">
@@ -37,7 +37,7 @@ export const WhatsAppWidget = () => {
                 </svg>
                 Chat with Codecubes
               </div>
-              <button onClick={() => setIsOpen(false)} className="hover:bg-primary-hover p-1 rounded-[5px] transition-colors">
+              <button onClick={() => setIsOpen(false)} className="hover:bg-primary-hover p-1 rounded-none transition-colors">
                 <X size={18} />
               </button>
             </div>
@@ -48,7 +48,7 @@ export const WhatsAppWidget = () => {
                   <button 
                     key={idx}
                     onClick={() => handleSend(faq)}
-                    className="w-full text-left p-3 text-sm bg-surface/50 hover:bg-primary/10 border border-white/5 rounded-[5px] transition-colors flex items-center justify-between group text-text-primary"
+                    className="w-full text-left p-3 text-sm bg-surface/50 hover:bg-primary/10 border border-white/5 rounded-none transition-colors flex items-center justify-between group text-text-primary"
                   >
                     <span className="font-sans">{faq}</span>
                     <Send size={14} className="text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -65,10 +65,10 @@ export const WhatsAppWidget = () => {
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open WhatsApp Chat"
-        className="w-[60px] h-[60px] bg-linear-to-br from-[#25D366] to-[#1ebe5d] text-white border-[5px] border-white rounded-full shadow-[0_8px_25px_rgba(37,211,102,0.4)] hover:shadow-[0_12px_30px_rgba(37,211,102,0.6)] flex items-center justify-center transition-all relative focus:outline-none"
+        className="w-[60px] h-[60px] bg-linear-to-br from-[#25D366] to-[#1ebe5d] text-white border-[5px] border-white rounded-none shadow-[0_8px_25px_rgba(37,211,102,0.4)] hover:shadow-[0_12px_30px_rgba(37,211,102,0.6)] flex items-center justify-center transition-all relative focus:outline-none"
       >
         {!isOpen && (
-           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-background animate-pulse" />
+           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-none border-2 border-background animate-pulse" />
         )}
         {isOpen ? (
           <X size={26} fill="currentColor" />

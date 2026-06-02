@@ -66,14 +66,14 @@ export default function DecoraNestCaseStudy() {
       <main className="pt-32">
         {/* HERO */}
         <section className="container mx-auto px-6 py-20 text-center relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary/10 blur-[120px] rounded-[5px] -z-10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary/10 blur-[120px] rounded-none -z-10" />
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            <span className="inline-block text-primary text-sm font-bold tracking-widest uppercase mb-6 font-sans bg-primary/10 px-4 py-2 rounded-[5px]">
+            <span className="inline-block text-primary text-sm font-bold tracking-widest uppercase mb-6 font-sans bg-primary/10 px-4 py-2 rounded-none">
               Web Development · Lead Generation
             </span>
             <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
@@ -106,7 +106,7 @@ export default function DecoraNestCaseStudy() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative rounded-[5px] overflow-hidden border border-white/10 shadow-strong-glow"
+            className="relative rounded-none overflow-hidden border border-white/10 shadow-strong-glow"
           >
             <img
               src="/images/decoranest.png"
@@ -116,7 +116,7 @@ export default function DecoraNestCaseStudy() {
             <div className="absolute inset-0 bg-linear-to-t from-background/70 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8 flex gap-3 flex-wrap">
               {['WordPress', 'Elementor', 'Floren Theme'].map((tag) => (
-                <span key={tag} className="glass px-4 py-2 rounded-[5px] text-sm font-bold text-primary font-sans">
+                <span key={tag} className="glass px-4 py-2 rounded-none text-sm font-bold text-primary font-sans">
                   {tag}
                 </span>
               ))}
@@ -146,7 +146,7 @@ export default function DecoraNestCaseStudy() {
               {metrics.map((m, i) => (
                 <motion.div key={i} variants={itemVariants}>
                   <GlassCard className="p-8 text-center border-white/[0.06] hover:border-primary/30 transition-colors h-full">
-                    <div className="w-12 h-12 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary mx-auto mb-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-none flex items-center justify-center text-primary mx-auto mb-4">
                       {m.icon}
                     </div>
                     <p className="text-3xl font-black text-white mb-2 font-heading">{m.value}</p>
@@ -190,7 +190,7 @@ export default function DecoraNestCaseStudy() {
               <motion.div
                 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.6 }}
-                className="glass p-12 rounded-[5px] border-primary/20 bg-primary/5"
+                className="glass p-12 rounded-none border-primary/20 bg-primary/5"
               >
                 <span className="block text-primary font-black uppercase tracking-widest text-xs font-sans mb-6">Business Impact</span>
                 <div className="space-y-6">
@@ -225,7 +225,7 @@ export default function DecoraNestCaseStudy() {
                   key={i}
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="p-10 glass rounded-[5px] group hover:bg-primary/5 transition-all text-left relative overflow-hidden"
+                  className="p-10 glass rounded-none group hover:bg-primary/5 transition-all text-left relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 p-6 text-6xl font-black text-primary/5">{step.num}</div>
                   <h3 className="text-xl font-black mb-4 relative z-10">{step.title}</h3>
@@ -273,9 +273,9 @@ export default function DecoraNestCaseStudy() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07 }}
-                  className="flex items-center gap-4 p-6 glass rounded-[5px] text-left border-primary/10 hover:border-primary/30 transition-colors"
+                  className="flex items-center gap-4 p-6 glass rounded-none text-left border-primary/10 hover:border-primary/30 transition-colors"
                 >
-                  <div className="w-10 h-10 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary flex-shrink-0">
+                  <div className="w-10 h-10 bg-primary/10 rounded-none flex items-center justify-center text-primary flex-shrink-0">
                     {out.icon}
                   </div>
                   <span className="font-bold text-text-primary">{out.text}</span>
@@ -297,7 +297,7 @@ export default function DecoraNestCaseStudy() {
               <div className="grid sm:grid-cols-3 gap-10 mb-16">
                 {['SEO drives organic traffic', 'Forms capture leads', 'Analytics guides growth'].map((p, i) => (
                   <div key={i} className="flex flex-col items-center gap-4">
-                    <div className="w-12 h-12 bg-white/10 rounded-[5px] flex items-center justify-center border border-white/20">
+                    <div className="w-12 h-12 bg-white/10 rounded-none flex items-center justify-center border border-white/20">
                       <ArrowRight />
                     </div>
                     <span className="font-bold text-lg">{p}</span>
@@ -315,7 +315,7 @@ export default function DecoraNestCaseStudy() {
         <section className="py-24 pb-40">
           <div className="container mx-auto px-6">
             <GlassCard className="p-20 text-center relative overflow-hidden bg-primary/5 border-primary/20 max-w-5xl mx-auto">
-              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-[5px] -z-10" />
+              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-none -z-10" />
               <h2 className="text-5xl font-black mb-6">Ready to Build Your Website?</h2>
               <p className="text-text-secondary text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-sans">
                 Whether you need a lead generation website or a full e-commerce store, we build digital experiences that deliver results.

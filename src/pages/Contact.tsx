@@ -103,7 +103,7 @@ export default function Contact() {
               fieldStrength={10}
             />
           </div>
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/10 blur-[150px] rounded-[5px] -z-10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/10 blur-[150px] rounded-none -z-10" />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -132,7 +132,7 @@ export default function Contact() {
                     { step: "Discussion", text: "We schedule a detailed conversation to align on strategy.", icon: <Zap /> }
                   ].map((s) => (
                     <div key={s.step} className="flex gap-6 items-start group">
-                      <div className="w-12 h-12 bg-primary/10 rounded-[5px] flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-primary/10 rounded-none flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
                         {React.cloneElement(s.icon as React.ReactElement<{size?: number}>, { size: 20 })}
                       </div>
                       <div>
@@ -144,7 +144,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="glass p-10 rounded-[5px] border-primary/20 bg-primary/5">
+              <div className="glass p-10 rounded-none border-primary/20 bg-primary/5">
                 <h4 className="text-2xl font-black mb-4">Why Reach Out?</h4>
                 <ul className="space-y-4">
                   {[
@@ -154,7 +154,7 @@ export default function Contact() {
                     "Understand how automation can improve efficiency"
                   ].map((item) => (
                     <li key={item} className="flex gap-3 items-center font-bold text-text-primary text-sm">
-                      <div className="w-5 h-5 bg-primary/20 rounded-[5px] flex items-center justify-center text-primary">
+                      <div className="w-5 h-5 bg-primary/20 rounded-none flex items-center justify-center text-primary">
                         <CheckCircle2 size={12} />
                       </div>
                       {item}
@@ -197,7 +197,7 @@ export default function Contact() {
                           id="name"
                           {...register('fullName', { required: 'Name is required' })}
                           placeholder="Code Cubes"
-                          className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                          className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>
                       <div className="space-y-2">
@@ -207,7 +207,7 @@ export default function Contact() {
                           {...register('email', { required: 'Email is required' })}
                           type="email"
                           placeholder="codecubesdigital@gmail.com"
-                          className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                          className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>
                       <div className="grid md:grid-cols-2 gap-6">
@@ -218,7 +218,7 @@ export default function Contact() {
                             {...register('phoneNumber', { required: 'Phone is required' })}
                             type="tel"
                             placeholder="+1 234 567 890"
-                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                            className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                           />
                         </div>
                         <div className="space-y-2">
@@ -227,7 +227,7 @@ export default function Contact() {
                             id="company"
                             {...register('companyName')}
                             placeholder="Acme Corp"
-                            className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                            className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                           />
                         </div>
                       </div>
@@ -237,7 +237,7 @@ export default function Contact() {
                           id="website"
                           {...register('websiteUrl')}
                           placeholder="https://..."
-                          className="h-14 bg-surface/50 border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50"
+                          className="h-14 bg-surface/50 border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50"
                         />
                       </div>
                       <div className="grid md:grid-cols-2 gap-6">
@@ -246,7 +246,7 @@ export default function Contact() {
                           <select
                             id="budget"
                             {...register('budget', { required: 'Budget is required' })}
-                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
+                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
                           >
                             <option value="">Select Budget</option>
                             <option value="<500">&lt; $500</option>
@@ -260,7 +260,7 @@ export default function Contact() {
                           <select
                             id="services"
                             {...register('services', { required: 'Service is required' })}
-                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-[5px] px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
+                            className="w-full h-14 bg-surface/50 border border-white/10 rounded-none px-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all appearance-none cursor-pointer"
                           >
                             <option value="">Select Service</option>
                             <option value="wordpress">Wordpress Web Development</option>
@@ -279,7 +279,7 @@ export default function Contact() {
                           id="message"
                           {...register('message', { required: 'Message is required' })}
                           placeholder="Tell us about your project..."
-                          className="w-full h-32 bg-surface/50 border border-white/10 rounded-[5px] p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none"
+                          className="w-full h-32 bg-surface/50 border border-white/10 rounded-none p-6 focus:ring-2 focus:ring-primary/50 outline-none transition-all resize-none"
                         ></textarea>
                       </div>
                       <Button type="submit" size="lg" className="w-full h-18 text-xl font-black shadow-glow group">
@@ -292,7 +292,7 @@ export default function Contact() {
                   </>
                 ) : (
                   <div className="text-center py-24">
-                    <div className="w-24 h-24 bg-primary/10 rounded-[5px] flex items-center justify-center mx-auto mb-8 shadow-glow">
+                    <div className="w-24 h-24 bg-primary/10 rounded-none flex items-center justify-center mx-auto mb-8 shadow-glow">
                       <CheckCircle2 size={48} className="text-primary animate-pulse" />
                     </div>
                     <h3 className="text-4xl font-black mb-4">Transmission Sent</h3>
@@ -310,7 +310,7 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="glass p-16 md:p-24 text-center rounded-[5px] relative overflow-hidden bg-primary/5 border-primary/20 shadow-strong-glow"
+            className="glass p-16 md:p-24 text-center rounded-none relative overflow-hidden bg-primary/5 border-primary/20 shadow-strong-glow"
           >
             <div className="absolute inset-0 bg-primary/5 blur-[80px] -z-10" />
             <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight">Start Building a <br /> <span className="text-gradient">Smarter System</span></h2>

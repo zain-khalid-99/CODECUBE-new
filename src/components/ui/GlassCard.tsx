@@ -32,19 +32,19 @@ export const GlassCard = ({ children, className, delay = 0 }: GlassCardProps) =>
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'glass rounded-[5px] p-6 relative overflow-hidden group will-change-transform',
+        'glass rounded-none p-6 relative overflow-hidden group will-change-transform',
         className
       )}
     >
       <div
-        className="pointer-events-none absolute -inset-px transition-opacity duration-500 rounded-[5px] z-0"
+        className="pointer-events-none absolute -inset-px transition-opacity duration-500 rounded-none z-0"
         style={{
           opacity,
           background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, var(--glow-color), transparent 40%)`,
         }}
       />
       {/* Accent Glow Fallback for mobile/static */}
-      <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-colors duration-500 rounded-[5px] z-0 opacity-50 md:opacity-0" />
+      <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-colors duration-500 rounded-none z-0 opacity-50 md:opacity-0" />
       
       <div className="relative z-10">
         {children}
