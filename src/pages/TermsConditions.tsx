@@ -10,7 +10,7 @@ export default function TermsConditions() {
       <SEO title="Terms and Conditions | CodeCubes" description="Terms and Conditions for CodeCubes Digital Agency" />
       <Navbar />
       <main className="flex-grow pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto glass p-8 md:p-12 rounded-[5px] border-primary/20">
+        <div className="max-w-4xl mx-auto glass p-8 md:p-12 rounded-none border-primary/20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

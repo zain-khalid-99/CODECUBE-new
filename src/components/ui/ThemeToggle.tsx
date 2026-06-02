@@ -7,8 +7,19 @@ export const ThemeToggle = () => {
 
   useEffect(() => {
     const root = window.document.documentElement;
-    const initialColorValue = root.classList.contains('dark');
-    setIsDark(initialColorValue);
+    const localTheme = localStorage.getItem('theme');
+    
+    if (localTheme === 'dark') {
+      root.classList.add('dark');
+      setIsDark(true);
+    } else if (localTheme === 'light') {
+      root.classList.remove('dark');
+      setIsDark(false);
+    } else {
+      // Default: light mode
+      root.classList.remove('dark');
+      setIsDark(false);
+    }
   }, []);
 
   const toggleTheme = () => {
@@ -27,7 +38,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-[5px] glass hover:bg-primary/10 transition-colors text-text-primary border border-white/10"
+      className="p-2 rounded-none glass hover:bg-primary/10 transition-colors text-text-primary border border-white/10"
       aria-label="Toggle theme"
     >
       <motion.div

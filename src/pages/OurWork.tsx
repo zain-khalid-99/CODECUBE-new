@@ -141,7 +141,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         exit={{ opacity: 0, scale: 0.94, y: 20 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         style={{ width: '70%', height: '85vh' }}
-        className="relative bg-background border border-white/10 rounded-[5px] overflow-hidden flex flex-col shadow-2xl"
+        className="relative bg-background border border-white/10 rounded-none overflow-hidden flex flex-col shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ── Hero image — top 40% ── */}
@@ -156,7 +156,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-9 h-9 bg-black/60 backdrop-blur-md rounded-[5px] flex items-center justify-center text-white hover:text-primary border border-white/10 hover:border-primary/50 transition-all z-10"
+            className="absolute top-4 right-4 w-9 h-9 bg-black/60 backdrop-blur-md rounded-none flex items-center justify-center text-white hover:text-primary border border-white/10 hover:border-primary/50 transition-all z-10"
             aria-label="Close"
           >
             <X size={18} />
@@ -164,7 +164,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
           {/* Category + title overlaid at image bottom */}
           <div className="absolute bottom-0 left-0 right-0 px-8 pb-6">
-            <span className="inline-block text-primary text-xs font-bold tracking-widest uppercase mb-2 font-sans bg-black/50 backdrop-blur-sm px-3 py-1 rounded-[5px] border border-primary/20">
+            <span className="inline-block text-primary text-xs font-bold tracking-widest uppercase mb-2 font-sans bg-black/50 backdrop-blur-sm px-3 py-1 rounded-none border border-primary/20">
               {project.category}
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-white leading-tight drop-shadow-lg">
@@ -213,7 +213,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               {project.results.map((result, i) => (
                 <div
                   key={i}
-                  className="glass p-4 rounded-[5px] border-primary/10 hover:border-primary/30 transition-all flex items-center justify-between"
+                  className="glass p-4 rounded-none border-primary/10 hover:border-primary/30 transition-all flex items-center justify-between"
                 >
                   <div>
                     <p className="text-text-muted text-xs uppercase mb-1 font-sans">{result.label}</p>
@@ -291,7 +291,7 @@ export default function OurWork() {
               fieldStrength={10}
             />
           </div>
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 blur-[120px] rounded-[5px] -z-10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 blur-[120px] rounded-none -z-10" />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -315,7 +315,7 @@ export default function OurWork() {
               <button
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`px-6 py-2 rounded-[5px] font-medium transition-all ${
+                className={`px-6 py-2 rounded-none font-medium transition-all ${
                   filter === f
                     ? 'bg-primary text-white shadow-glow'
                     : 'glass text-text-secondary hover:text-white'
@@ -354,7 +354,7 @@ export default function OurWork() {
                           }`}
                         />
                         <motion.div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <div className="w-12 h-12 glass rounded-[5px] flex items-center justify-center text-primary shadow-glow scale-0 group-hover:scale-100 transition-transform duration-500">
+                          <div className="w-12 h-12 glass rounded-none flex items-center justify-center text-primary shadow-glow scale-0 group-hover:scale-100 transition-transform duration-500">
                             <ExternalLink size={20} />
                           </div>
                         </motion.div>
@@ -378,7 +378,7 @@ export default function OurWork() {
         {/* Final CTA */}
         <Section className="pb-40">
           <GlassCard className="p-20 text-center relative overflow-hidden bg-primary/5 border-primary/20">
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-[5px] -z-10" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-none -z-10" />
             <h2 className="mb-6">Want results like these?</h2>
             <p className="text-text-secondary text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-sans">
               Your business is one system away from its next major breakthrough. Let's find it together.

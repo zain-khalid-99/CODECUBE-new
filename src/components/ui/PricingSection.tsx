@@ -324,7 +324,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ categoryId }) =>
               <button
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
-                className={`px-6 py-3 rounded-[5px] font-bold text-sm transition-all duration-300 ${
+                className={`px-6 py-3 rounded-none font-bold text-sm transition-all duration-300 ${
                   activeTab === cat.id 
                     ? 'bg-primary text-primary-foreground shadow-glow' 
                     : 'bg-surface/50 text-text-secondary hover:bg-surface border border-white/5'
@@ -361,7 +361,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ categoryId }) =>
                   }`}
                 >
                   {plan.popular && (
-                    <div className="absolute top-4 right-4 bg-primary text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-[5px] text-primary-foreground shadow-glow">
+                    <div className="absolute top-4 right-4 bg-primary text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-none text-primary-foreground shadow-glow">
                       Most Popular
                     </div>
                   )}
@@ -435,7 +435,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ categoryId }) =>
            <p className="text-text-muted text-sm font-sans max-w-2xl mx-auto leading-relaxed mb-4">
              All prices are exclusive of Shopify or third-party app subscription fees. Ad spend / media budget is separate from our management fee. 
            </p>
-           <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-[5px] border-primary/20 bg-primary/5 text-primary text-sm font-bold font-sans">
+           <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-none border-primary/20 bg-primary/5 text-primary text-sm font-bold font-sans">
              ★ 15% bundle discount when you take 2 or more services together.
            </div>
         </div>

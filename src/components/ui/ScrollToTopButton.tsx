@@ -21,7 +21,7 @@ export const ScrollToTopButton = () => {
       <Button
         size="icon"
         onClick={scrollToTop}
-        className="w-12 h-12 rounded-[5px] shadow-glow hover:shadow-strong-glow bg-surface/80 backdrop-blur-sm border border-primary/20 text-text-primary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-all"
+        className="w-12 h-12 rounded-none shadow-glow hover:shadow-strong-glow bg-surface/80 backdrop-blur-sm border border-primary/20 text-text-primary hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-all"
         aria-label="Scroll to top"
       >
         <ArrowUp size={24} />

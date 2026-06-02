@@ -3,7 +3,7 @@
   --cursor-angle: 45deg;
   --edge-sensitivity: 30;
   --color-sensitivity: calc(var(--edge-sensitivity) + 20);
-  --border-radius: 28px;
+  --border-radius: 0px;
   --glow-padding: 40px;
   --cone-spread: 25;
 
@@ -20,12 +20,13 @@
 }
 
 .border-glow-card:hover {
-  border-color: #000000;
+  border-color: #F16232;
+  box-shadow: 0 0 15px rgba(241, 98, 50, 0.15);
 }
 
 .dark .border-glow-card:hover {
-  border-color: #ff6000;
-  box-shadow: 0 0 15px rgba(255, 96, 0, 0.15);
+  border-color: #F16232;
+  box-shadow: 0 0 15px rgba(241, 98, 50, 0.15);
 }
 
 .border-glow-card::before,
